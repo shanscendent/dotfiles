@@ -1,7 +1,14 @@
 # Shan's Dotfiles
-## Install chezmoi
+## Prerequisites
+Install homebrew so we can easily install chezmoi on Mac or Linux. For users with passwordless sudo, prepend `CI=1` to the installation command.
 ```bash
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply shanscendent
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install chezmoi
+```
+
+## Set up chezmoi
+```bash
+chezmoi init shanscendent --apply 
 ```
 
 ## Create chezmoi.toml for machine-specific variables

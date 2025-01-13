@@ -1,0 +1,13 @@
+{{- if ne .chezmoi.os "darwin" }}
+Library/
+.zshrc
+.tmux.conf
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.bashrc
+.tmux.conf
+{{- end }}
+
+{{- if ne .chezmoi.os "windows" }}
+{{- end }}

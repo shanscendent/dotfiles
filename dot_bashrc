@@ -115,3 +115,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+eval "$(zoxide init bash)"
