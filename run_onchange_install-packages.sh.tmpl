@@ -1,8 +1,9 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 sudo apt install jq -y
-brew install fzf zoxide lazygit lazydocker bash-completion@2
+brew install fzf zoxide lazygit lazydocker
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
 brew install jq fzf zoxide lazygit lazydocker 
 {{ end -}}
+

@@ -5,6 +5,7 @@ Library/
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
+.profile
 .bashrc
 .tmux.conf
 {{- end }}
