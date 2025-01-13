@@ -119,4 +119,4 @@ fi
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
-eval "$(zoxide init bash)"
+eval "$(zoxide init --cmd cd bash)"
