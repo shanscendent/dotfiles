@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.30/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 5,
+  "default_container_padding": 5,
+  "border": true,
+  "border_width": 8,
+  "border_offset": -1,
+  "border_style": "Rounded",
+  "border_colours": {
+	"unfocused": "#bcc0cc",
+	"single": "#dc8a78",
+	"floating": "#d20f39",
+	"monocle": "#e64553",
+	"stack": "#179299"
+  },
+  "theme": {
+    "palette": "Catppuccin",
+    "name": "Latte",
+    "unfocused_border": "Surface1",
+    "bar_accent": "Sky"
+  },
+  "stackbar": {
+    "height": 40,
+    "mode": "Never",
+    "tabs": {
+      "width": 300
+    }
+  },
+  "bar_configurations": [
+    "$Env:USERPROFILE/komorebi.bar.monitor0.json",
+    "$Env:USERPROFILE/komorebi.bar.monitor1.json",
+	"$Env:USERPROFILE/komorebi.bar.monitor2.json"
+  ],
+  "display_index_preferences": {
+	  "0": "GSM5BC2-4&1c3b1d78&0&UID8259",
+	  "1": "ACR0331-8&13446c3c&0&UID256",
+	  "2": "LEN61F7-8&13446c3c&0&UID257",
+	  "3": "HPN36EC-4&1c3b1d78&0&UID24644",
+	  "4": "AUOA68B-4&1c3b1d78&0&UID8388688",
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "2",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "3",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "4",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "5",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "6",
+          "layout": "VerticalStack"
+        }
+      ]
+    },
+	{
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "VerticalStack"
+        }
+      ]
+    },
+	{
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "Rows"
+        }
+      ]
+    }
+  ]
+}

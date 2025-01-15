@@ -11,4 +11,10 @@ Library/
 {{- end }}
 
 {{- if ne .chezmoi.os "windows" }}
+.wslconfig
+komorebi.ahk
+komorebi.bar.monitor0.json
+komorebi.bar.monitor1.json
+komorebi.bar.monitor2.json
+komorebi.json
 {{- end }}
