@@ -120,3 +120,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
 eval "$(zoxide init --cmd cd bash)"
+
+alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=3"'
+
