@@ -1,0 +1,2 @@
+ocodo/ollama_zsh_completion
+

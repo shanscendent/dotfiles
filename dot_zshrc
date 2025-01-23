@@ -103,6 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load
+
 autoload -Uz compinit
 compinit
 
@@ -114,3 +117,4 @@ hud() {
 }
 
 alias ll='ls -lah'
+
