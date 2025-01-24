@@ -1,0 +1,17 @@
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+# Define the target directory
+TMUX_DIR="$HOME/.tmux"
+
+# Check if the directory exists
+if [ -d "$TMUX_DIR" ]; then
+    echo "Oh My Tmux! already installed. Pulling latest changes..."
+    git -C "$TMUX_DIR" pull
+else
+    echo "Oh My Tmux! not found. Cloning repository..."
+    git clone --single-branch https://github.com/gpakosz/.tmux.git "$TMUX_DIR"
+    # Create symbolic link for .tmux.conf
+    ln -sf "$TMUX_DIR/.tmux.conf" "$HOME/.tmux.conf"
+fi
+{{ end -}}

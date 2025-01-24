@@ -116,6 +116,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# WSL does not read /etc/environment, so we need to export it here
+export $(cat /etc/environment | xargs)
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --bash)"
