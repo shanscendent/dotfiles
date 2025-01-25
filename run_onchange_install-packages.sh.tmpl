@@ -1,9 +1,12 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-sudo apt install jq autossh -y
-brew install fzf zoxide lazygit lazydocker fpp
+sudo apt update
+sudo apt install tmux jq autossh -y
+brew update
+brew install fzf zoxide lazygit lazydocker fpp nnn
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
-brew install jq fzf zoxide lazygit lazydocker antidote autossh fpp
+brew update
+brew install jq fzf zoxide lazygit lazydocker antidote autossh fpp nnn
 {{ end -}}
 

@@ -1,0 +1,15 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+# Define the target directory
+FZF_DIR="$HOME/.config/fzf-tab-completion"
+
+# Check if the directory exists
+if [ -d "$FZF_DIR" ]; then
+    echo "fzf-tab-completion already installed. Pulling latest changes..."
+    git -C "$FZF_DIR" pull
+else
+    echo "fzf-tab-completion not found. Cloning repository..."
+    git clone --single-branch https://github.com/lincheney/fzf-tab-completion "$FZF_DIR"
+fi
+{{ end -}}
