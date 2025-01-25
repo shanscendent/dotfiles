@@ -413,6 +413,9 @@ bind ` send-prefix
 # move status line to top
 #set -g status-position top
 
+# swap windows
+bind-key [ swap-window -t -1\; select-window -t -1
+bind-key ] swap-window -t +1\; select-window -t +1
 
 # -- tpm -----------------------------------------------------------------------
 
