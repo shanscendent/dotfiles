@@ -2,11 +2,14 @@
 #!/bin/bash
 sudo apt update
 sudo apt install tmux jq autossh -y
+packages="fzf zoxide lazygit lazydocker fpp fd ripgrep yazi"
 brew update
-brew install fzf zoxide lazygit lazydocker fpp nnn
+eval "brew install $packages"
+eval "brew upgrade $packages"
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
+packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd ripgrep yazi"
 brew update
-brew install jq fzf zoxide lazygit lazydocker antidote autossh fpp nnn
+eval "brew install $packages"
+eval "brew upgrade $packages"
 {{ end -}}
-

@@ -127,5 +127,14 @@ eval "$(zoxide init --cmd cd bash)"
 source ~/.config/fzf-tab-completion/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=3"'
 

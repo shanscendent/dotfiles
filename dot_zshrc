@@ -134,9 +134,18 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
 hud() {
     /bin/launchctl setenv MTL_HUD_ENABLED $1
 }
 
 alias ll='ls -lah'
-
+alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=3"'
