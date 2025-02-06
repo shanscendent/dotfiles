@@ -121,7 +121,7 @@ export $(cat /etc/environment | xargs)
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Set up fzf key bindings and fuzzy completion
-eval "$(fzf --bash)"
+FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
 eval "$(zoxide init --cmd cd bash)"
 
 source ~/.config/fzf-tab-completion/bash/fzf-bash-completion.sh

@@ -132,7 +132,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 eval "$(zoxide init --cmd cd zsh)"
-source <(fzf --zsh)
+FZF_ALT_C_COMMAND= source <(fzf --zsh)
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
