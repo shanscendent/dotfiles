@@ -1,0 +1,14 @@
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+PATH_DIR="$HOME/bin"
+CHT_SH="$PATH_DIR/cht.sh"
+
+if [ ! -f "$CHT_SH" ]; then
+    echo "Installing cht.sh"
+    mkdir -p "$PATH_DIR"
+    curl -sS https://cht.sh/:cht.sh > "$CHT_SH"
+    chmod +x "$CHT_SH"
+    echo "cht.sh installed"
+fi
+{{ end -}}
