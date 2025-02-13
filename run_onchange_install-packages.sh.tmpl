@@ -2,16 +2,18 @@
 #!/bin/bash
 sudo apt update
 sudo apt install tmux jq autossh -y
-packages="fzf zoxide lazygit lazydocker fpp fd ripgrep yazi glow ugrep bat tree rlwrap"
+packages="fzf zoxide lazygit lazydocker fpp fd ripgrep yazi glow ugrep bat tree rlwrap starship"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
+brew install --cask font-jetbrains-mono-nerd-font
 exec bash
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
-packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd ripgrep yazi glow ugrep bat tree rlwrap"
+packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd ripgrep yazi glow ugrep bat tree rlwrap starship"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
+brew install --cask font-jetbrains-mono-nerd-font
 exec zsh
 {{ end -}}

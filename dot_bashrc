@@ -122,6 +122,9 @@ export PATH="$HOME/bin:$PATH"
 export $(cat /etc/environment | xargs)
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval "$(starship init bash)"
+
 # Set up fzf key bindings and fuzzy completion
 FZF_ALT_C_COMMAND= eval "$(fzf --bash)"
 eval "$(zoxide init --cmd cd bash)"

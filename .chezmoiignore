@@ -12,6 +12,7 @@ Library/
 
 {{- if ne .chezmoi.os "windows" }}
 .wslconfig
+OneDrive - Intel Corporation/
 komorebi.ahk
 komorebi.bar.monitor0.json
 komorebi.bar.monitor1.json

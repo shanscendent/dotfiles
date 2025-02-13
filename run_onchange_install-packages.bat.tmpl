@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "windows" }}
+winget install --id=AutoHotkey.AutoHotkey
+winget install LGUG2Z.komorebi
+winget install --id=Starship.Starship -e
+winget install --id=DEVCOM.JetBrainsMonoNerdFont -e
+powershell -ExecutionPolicy Bypass -NoProfile -Command ". $PROFILE"
+{{ end -}}
