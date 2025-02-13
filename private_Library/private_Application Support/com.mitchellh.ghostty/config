@@ -1,6 +1,6 @@
 #custom-shader = /Users/shan/.config/ghostty/ghostty-shaders/bloom.glsl
-#theme = light:catppuccin-latte,dark:catppuccin-mocha
-theme = light:iTerm2 Light Background,dark:deep
+#theme = light:iTerm2 Light Background,dark:deep
+theme = light:GruvboxLightHard,dark:GruvboxDarkHard
 clipboard-read = allow
 clipboard-write = allow
 window-colorspace = display-p3
