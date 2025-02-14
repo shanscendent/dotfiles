@@ -158,3 +158,6 @@ alias xdump='ugrep -X ""'                 # hexdump files without searching (don
 alias zmore='ugrep+ -z -I -+ --pager ""'  # view compressed, archived and regular files (don't use .ugrep config)
 
 alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=3"'
+alias v='nvim'
+alias vi='nvim'
+

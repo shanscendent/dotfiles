@@ -169,3 +169,6 @@ alias zmore='ugrep+ -z -I -+ --pager ""'  # view compressed, archived and regula
 
 alias ll='ls -lah'
 alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=3"'
+alias v='nvim'
+alias vi='nvim'
+
