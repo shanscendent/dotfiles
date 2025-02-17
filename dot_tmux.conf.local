@@ -392,6 +392,11 @@ tmux_conf_theme_clock_style="24"
 tmux_conf_copy_to_os_clipboard=true
 set -s set-clipboard on
 
+# enable yazi image preview through ssh
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+
 # -- urlscan -------------------------------------------------------------------
 
 # options passed to urlscan
