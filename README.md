@@ -23,7 +23,22 @@ winget install --id=twpayne.chezmoi  -e
 ## Set up chezmoi
 
 ```bash
-chezmoi init shanscendent --apply 
+chezmoi init shanscendent --apply
+```
+
+## Additional setup
+
+Set XDG_CONFIG_HOME for neovim config
+
+```powershell
+setx /M XDG_CONFIG_HOME "%USERPROFILE%\\.config"
+```
+
+Install npm for mason
+
+```powershell
+nvm install lts
+nvm use <lts_version>
 ```
 
 ## Create chezmoi.toml for machine-specific variables
