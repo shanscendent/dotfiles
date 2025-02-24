@@ -41,6 +41,13 @@ nvm install lts
 nvm use <lts_version>
 ```
 
+Open an admin powershell, then:  
+Install the latest PSReadLine for Predictive IntelliSense
+
+```powershell
+Install-Module -Name PSReadLine -Force
+```
+
 ## Create chezmoi.toml for machine-specific variables
 
 ### Linux/Mac
