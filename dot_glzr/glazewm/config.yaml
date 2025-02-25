@@ -154,6 +154,25 @@ window_rules:
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
 
+  - commands: ["move --workspace 1"]
+    match:
+      - window_process: { regex: "msedge|brave|chrome|firefox" }
+  - commands: ["move --workspace 2"]
+    match:
+      - window_process: { regex: "Foxit|Code|POWERPNT|WINWORD|EXCEL|Insomnia" }
+  - commands: ["move --workspace 3"]
+    match:
+      - window_process: { regex: "teams|olk" }
+  - commands: ["move --workspace 4"]
+    match:
+      - window_process: { regex: "OpenConsole" }
+  - commands: ["move --workspace 5"]
+    match:
+      - window_process: { regex: "Obsidian|ONENOTE|notepad++" }
+  - commands: ["move --workspace 6"]
+    match:
+      - window_process: { regex: "Spotify" }
+
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: 'resize'
