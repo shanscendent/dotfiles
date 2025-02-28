@@ -165,7 +165,7 @@ window_rules:
       - window_process: { regex: "teams|olk" }
   - commands: ["move --workspace 4"]
     match:
-      - window_process: { regex: "OpenConsole" }
+      - window_process: { regex: "WindowsTerminal|OpenConsole" }
   - commands: ["move --workspace 5"]
     match:
       - window_process: { regex: "Obsidian|ONENOTE|notepad++" }
