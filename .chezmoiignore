@@ -2,6 +2,7 @@
 Library/
 .zshrc
 .tmux.conf
+.config/aerospace/
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
@@ -13,6 +14,7 @@ Library/
 {{- if ne .chezmoi.os "windows" }}
 .wslconfig
 OneDrive - Intel Corporation/
+.glzr
 komorebi.ahk
 komorebi.bar.monitor0.json
 komorebi.bar.monitor1.json
