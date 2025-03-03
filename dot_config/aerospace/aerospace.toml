@@ -169,6 +169,8 @@ ctrl-alt-cmd-down = 'join-with down'
 ctrl-alt-cmd-up = 'join-with up'
 ctrl-alt-cmd-right = 'join-with right'
 
+ctrl-alt-cmd-m = 'macos-native-minimize'
+
 [[on-window-detected]]
 if.app-id = 'com.microsoft.edgemac'
 run = 'move-node-to-workspace 1'
