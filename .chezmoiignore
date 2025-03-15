@@ -1,6 +1,7 @@
 {{- if ne .chezmoi.os "darwin" }}
 Library/
 .zshrc
+.zsh_plugins.txt
 .tmux.conf
 .config/aerospace/
 {{- end }}
@@ -20,4 +21,7 @@ komorebi.bar.monitor0.json
 komorebi.bar.monitor1.json
 komorebi.bar.monitor2.json
 komorebi.json
+scripts/caps.ahk
 {{- end }}
+
+README.md
