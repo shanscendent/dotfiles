@@ -4,6 +4,7 @@ Library/
 .zsh_plugins.txt
 .tmux.conf
 .config/aerospace/
+.config/karabiner/
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}

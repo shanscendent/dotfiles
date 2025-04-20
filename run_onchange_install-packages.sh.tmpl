@@ -2,7 +2,7 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get install tmux jq autossh -y
-packages="fzf zoxide lazygit lazydocker fpp fd ripgrep yazi trash-cli glow ugrep bat tree rlwrap starship neovim npm git-delta"
+packages="fzf zoxide lazygit lazydocker fpp fd eza ripgrep yazi trash-cli glow ugrep bat tree rlwrap starship neovim npm git-delta"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
@@ -10,7 +10,7 @@ brew install --cask font-jetbrains-mono-nerd-font
 exec bash
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
-packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd ripgrep yazi glow ugrep bat tree rlwrap starship neovim npm git-delta"
+packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd eza ripgrep yazi glow ugrep bat tree rlwrap starship neovim npm git-delta"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
