@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=32768
+HISTFILESIZE=32768
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -161,3 +161,36 @@ alias autossh='autossh -M 0 -o "ServerAliveInterval=10" -o "ServerAliveCountMax=
 alias v='nvim'
 alias vi='nvim'
 
+# omakub inspired
+# Technicolor dreams
+force_color_prompt=yes
+color_prompt=yes
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+# File system
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+alias lt='eza --tree --level=2 --long --icons --git'
+alias lta='lt -a'
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Tools
+alias n='nvim'
+alias g='git'
+alias d='docker'
+alias lzg='lazygit'
+alias lzd='lazydocker'
+
+# Git
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+alias gcad='git commit -a --amend'
+
+# Compression
+compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
+alias decompress="tar -xzf"
