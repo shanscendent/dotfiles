@@ -23,6 +23,7 @@ komorebi.bar.monitor1.json
 komorebi.bar.monitor2.json
 komorebi.json
 scripts/caps.ahk
+.wezterm.lua
 {{- end }}
 
 README.md
