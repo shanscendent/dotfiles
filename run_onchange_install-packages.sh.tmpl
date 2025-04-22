@@ -1,19 +1,17 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-sudo apt-get update
-sudo apt-get install tmux jq autossh -y
-packages="fzf zoxide lazygit lazydocker fpp fd eza ripgrep yazi trash-cli glow ugrep bat tree rlwrap starship neovim npm git-delta"
+packages="tmux jq autossh fzf zoxide lazygit lazydocker fpp fd eza ripgrep yazi trash-cli glow ugrep bat tree rlwrap starship neovim npm go git-delta"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
 brew install --cask font-jetbrains-mono-nerd-font
-exec bash
+source ~/.bashrc
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/zsh
-packages="jq fzf zoxide lazygit lazydocker antidote autossh fpp fd eza ripgrep yazi glow ugrep bat tree rlwrap starship neovim npm git-delta"
+packages="tmux jq fzf zoxide lazygit lazydocker antidote autossh fpp fd eza ripgrep yazi glow ugrep bat tree rlwrap starship neovim npm go git-delta"
 brew update
 eval "brew install $packages"
 eval "brew upgrade $packages"
 brew install --cask font-jetbrains-mono-nerd-font
-exec zsh
+source ~/.zshrc
 {{ end -}}

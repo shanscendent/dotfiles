@@ -1,5 +1,18 @@
 # Shan's Dotfiles
 
+## Set up chezmoi
+
+```bash
+chezmoi init shanscendent --apply
+```
+
+## Usage
+```bash
+chezmoi update --apply
+```
+
+Exit and reopen your terminal to apply changes.
+
 ## Prerequisites
 
 ### Linux/Mac
@@ -20,13 +33,8 @@ Install chezmoi on winget
 winget install --id=twpayne.chezmoi  -e
 ```
 
-## Set up chezmoi
 
-```bash
-chezmoi init shanscendent --apply
-```
-
-## Additional setup
+#### Additional setup
 
 Set XDG_CONFIG_HOME for neovim config
 
@@ -70,4 +78,3 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 ## To-Do
 
 - TODO Fix delta in lazygit theme autodetection
-- TODO Change to homebrew for all Linux packages
