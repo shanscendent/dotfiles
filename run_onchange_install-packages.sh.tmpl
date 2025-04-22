@@ -1,17 +1,74 @@
-{{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
-packages="tmux jq autossh fzf zoxide lazygit lazydocker fpp fd eza ripgrep yazi trash-cli glow ugrep bat tree rlwrap starship neovim npm go git-delta"
-brew update
-eval "brew install $packages"
-eval "brew upgrade $packages"
-brew install --cask font-jetbrains-mono-nerd-font
-source ~/.bashrc
+
+# Define OS-specific packages as proper arrays
+{{ if eq .chezmoi.os "linux" -}}
+packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza" "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go" "git-delta" "trash-cli")
 {{ else if eq .chezmoi.os "darwin" -}}
-#!/bin/zsh
-packages="tmux jq fzf zoxide lazygit lazydocker antidote autossh fpp fd eza ripgrep yazi glow ugrep bat tree rlwrap starship neovim npm go git-delta"
-brew update
-eval "brew install $packages"
-eval "brew upgrade $packages"
-brew install --cask font-jetbrains-mono-nerd-font
-source ~/.zshrc
+packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza" "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go" "git-delta" "antidote")
 {{ end -}}
+
+# Function to check if a brew package is installed
+is_installed() {
+  brew list "$1" &>/dev/null
+}
+
+# Function to check if a package needs upgrade
+needs_upgrade() {
+  brew outdated | grep -q "^$1\$"
+}
+
+# Function to install packages only if they're not already installed
+install_packages() {
+  local missing_packages=()
+  for pkg in "$@"; do
+    if ! is_installed "$pkg"; then
+      missing_packages+=("$pkg")
+    fi
+  done
+
+  if [ ${#missing_packages[@]} -gt 0 ]; then
+    echo "Installing missing packages: ${missing_packages[*]}"
+    brew install "${missing_packages[@]}"
+  else
+    echo "All packages already installed."
+  fi
+}
+
+# Function to upgrade only outdated packages from our list
+upgrade_packages() {
+  local outdated_packages=()
+  for pkg in "$@"; do
+    if is_installed "$pkg" && needs_upgrade "$pkg"; then
+      outdated_packages+=("$pkg")
+    fi
+  done
+
+  if [ ${#outdated_packages[@]} -gt 0 ]; then
+    echo "Upgrading outdated packages: ${outdated_packages[@]}"
+    brew upgrade "${outdated_packages[@]}"
+  else
+    echo "All packages are up to date."
+  fi
+}
+
+# Update brew silently
+# brew update &>/dev/null
+brew update
+
+# Install missing packages only
+install_packages "${packages[@]}"
+
+# Upgrade only outdated packages
+upgrade_packages "${packages[@]}"
+
+# Check if font is already installed
+if ! brew list --cask font-jetbrains-mono-nerd-font &>/dev/null; then
+  brew install --cask font-jetbrains-mono-nerd-font
+fi
+
+# Don't source rc files directly - print instruction instead
+echo ""
+echo "✅ Package installation complete!"
+echo "Please restart your terminal or run the appropriate command for your shell:"
+echo "  - Bash: source ~/.bashrc"
+echo "  - Zsh:  source ~/.zshrc"
