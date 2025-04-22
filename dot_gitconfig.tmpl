@@ -1,14 +1,6 @@
-{{ if eq .chezmoi.os "darwin" -}}
-{{ else if eq .chezmoi.os "linux" -}}
-{{ if eq .environment "intel" -}}
-[credential]
-	helper = cache --timeout=604800
-{{ end -}}
-{{ end -}}
-
 [user]
 	name = Shan Lee
-	email = {{ .email | quote }}
+	email = shanlee41@gmail.com
 
 [core]
     pager = delta

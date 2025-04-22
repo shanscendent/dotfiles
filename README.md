@@ -50,6 +50,8 @@ Install-Module -Name PSReadLine -Force
 
 ## Create chezmoi.toml for machine-specific variables
 
+Not needed at the moment
+
 ### Linux/Mac
 
 ```bash
@@ -64,23 +66,6 @@ New-Item -Path "~/.config/chezmoi" -ItemType Directory -Force; New-Item -Path "~
 notepad "$HOME/.config/chezmoi/chezmoi.toml"
 ```
 
-## chezmoi.toml
-
-Work:
-
-```toml
-[data]
-    environment = "intel"
-    email = "shan.neng.lee@intel.com"
-```
-
-Personal:
-
-```toml
-[data]
-    environment = "personal"
-    email = "shanlee41@gmail.com"
-```
 
 ## To-Do
 
