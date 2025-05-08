@@ -7,6 +7,7 @@ chezmoi init shanscendent --apply
 ```
 
 ## Usage
+
 ```bash
 chezmoi update --apply
 ```
@@ -32,7 +33,6 @@ Install chezmoi on winget
 ```powershell
 winget install --id=twpayne.chezmoi  -e
 ```
-
 
 #### Additional setup
 
@@ -74,7 +74,7 @@ New-Item -Path "~/.config/chezmoi" -ItemType Directory -Force; New-Item -Path "~
 notepad "$HOME/.config/chezmoi/chezmoi.toml"
 ```
 
-
 ## To-Do
 
 - TODO Fix delta in lazygit theme autodetection
+- Upgrade to mason 2.0.0 after lazyvim fixes it https://github.com/LazyVim/LazyVim/issues/6039
