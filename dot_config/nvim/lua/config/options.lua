@@ -22,3 +22,5 @@ vim.g.clipboard = {
     ["*"] = paste,
   },
 }
+
+vim.g.ai_cmp = true
