@@ -1,12 +1,41 @@
 # Shan's Dotfiles
 
-## Set up chezmoi
+## Quick Setup
+
+### Minimal vimrc for remote servers
+
+Run this command
+
+```sh
+curl -o ~/.vimrc https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_vimrc
+```
+
+Alternatively, if you don't have internet access, just go to the link and copy the content [.vimrc](https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_vimrc)
+
+### New Linux server setup
+
+Takes about 5-10 minutes to finish running.
+
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install build-essential -y
+CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> ~/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+brew install gcc chezmoi
+chezmoi init shanscendent --apply
+```
+
+## Usage
+
+### Set up chezmoi
 
 ```bash
 chezmoi init shanscendent --apply
 ```
 
-## Usage
+### Usage
 
 ```bash
 chezmoi update --apply

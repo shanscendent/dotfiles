@@ -5,12 +5,14 @@ Library/
 .tmux.conf
 .config/aerospace/
 .config/karabiner/
+.vimrc
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}
 .profile
 .bashrc
 .tmux.conf
+.vimrc
 {{- end }}
 
 {{- if ne .chezmoi.os "windows" }}
