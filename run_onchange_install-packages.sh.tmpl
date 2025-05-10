@@ -2,9 +2,15 @@
 
 # Define OS-specific packages as proper arrays
 {{ if eq .chezmoi.os "linux" -}}
-packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza" "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go" "git-delta" "trash-cli")
+packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
+  "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
+  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "trash-cli"
+)
 {{ else if eq .chezmoi.os "darwin" -}}
-packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza" "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go" "git-delta" "antidote")
+packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
+  "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
+  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote"
+)
 {{ end -}}
 
 # Function to check if a brew package is installed
