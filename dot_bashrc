@@ -115,6 +115,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export MANPAGER='nvim +Man!'
+
 # WSL does not read /etc/environment, so we need to export it here
 export $(cat /etc/environment | xargs)
 

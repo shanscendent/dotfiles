@@ -134,6 +134,7 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export MANPAGER='nvim +Man!'
 
 eval "$(starship init zsh)"
 
