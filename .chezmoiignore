@@ -1,8 +1,5 @@
 {{- if ne .chezmoi.os "darwin" }}
 Library/
-.zshrc
-.zsh_plugins.txt
-.tmux.conf
 .config/aerospace/
 .config/karabiner/
 .config/xnviewmp/
@@ -11,7 +8,6 @@ Library/
 {{- if ne .chezmoi.os "linux" }}
 .profile
 .bashrc
-.tmux.conf
 {{- end }}
 
 {{- if ne .chezmoi.os "windows" }}
@@ -28,4 +24,5 @@ scripts/caps.ahk
 .wezterm.lua
 {{- end }}
 
+.tmux.conf
 README.md

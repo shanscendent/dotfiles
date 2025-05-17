@@ -1,0 +1,41 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+# Check if zsh is installed
+if ! command -v zsh &>/dev/null; then
+  echo "zsh is not installed. Installing zsh..."
+  brew install zsh
+
+  # Verify if zsh was successfully installed
+  if ! command -v zsh &>/dev/null; then
+    echo "Failed to install zsh. Please install it manually."
+    exit 1
+  fi
+
+  # add zsh to /etc/shells
+  echo $(which zsh) | sudo tee -a /etc/shells
+else
+  echo "zsh is already installed."
+fi
+
+# Change the default shell to zsh
+grep -q "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
+sudo chsh -s "$(command -v zsh)" "$(whoami)"
+
+# Check if Oh My Zsh is already installed
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  echo "Oh My Zsh is already installed."
+  exit 0
+fi
+
+# Install Oh My Zsh
+echo "Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+# Check if the installation was successful
+if [ -d "$HOME/.oh-my-zsh" ]; then
+  echo "Oh My Zsh installed successfully!"
+else
+  echo "Oh My Zsh installation failed."
+fi
+{{ end }}
