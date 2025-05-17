@@ -4,13 +4,13 @@
 {{ if eq .chezmoi.os "linux" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
-  "zsh-autosuggestions" "zsh-syntax-highlighting" "tlrc"
+  "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "trash-cli"
 )
 {{ else if eq .chezmoi.os "darwin" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
-  "zsh-autosuggestions" "zsh-syntax-highlighting" "tlrc"
+  "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote"
 )
 {{ end -}}
