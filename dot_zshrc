@@ -25,7 +25,7 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -105,7 +105,26 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:$PATH"
 
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+# Homebrew setup
+# Detect the operating system
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export HOMEBREW_PREFIX="/opt/homebrew"
+elif [[ "$(uname -s)" == "Linux" ]]; then
+  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+fi
+
+# Add Homebrew to the PATH if not already present
+if [[ -d "$HOMEBREW_PREFIX/bin" && ":$PATH:" != *":$HOMEBREW_PREFIX/bin:"* ]]; then
+  export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+fi
+
+# Include Homebrew's sbin directory in the PATH if not already present
+if [[ -d "$HOMEBREW_PREFIX/sbin" && ":$PATH:" != *":$HOMEBREW_PREFIX/sbin:"* ]]; then
+  export PATH="$HOMEBREW_PREFIX/sbin:$PATH"
+fi
+eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
+
+source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
 autoload -Uz compinit
@@ -135,6 +154,7 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export MANPAGER='nvim +Man!'
+export EDITOR="nvim"
 
 eval "$(starship init zsh)"
 
