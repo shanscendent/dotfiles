@@ -127,6 +127,8 @@ eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
 antidote load
 
+fpath=(~/.zsh.d/ $fpath)
+
 autoload -Uz compinit
 compinit
 
