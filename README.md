@@ -27,6 +27,27 @@ brew install gcc chezmoi
 chezmoi init shanscendent --apply
 ```
 
+### Test Drive
+
+Want to take these dotfiles for a test drive? There's a ready made Ubuntu container that you can drop into to have a go. Note that it'll be slightly out of date
+
+Please have docker available on your system.
+
+```bash
+docker run --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest zsh
+```
+
+Alternatively, if you'd like to leave it running and remove it later
+
+```bash
+# Start the container
+docker run --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest sleep infinity
+# Execute into it
+docker exec -it shanbuntu zsh
+# Stop and remove the container
+docker stop shanbuntu && docker rm shanbuntu
+```
+
 ## Usage
 
 ### Set up chezmoi
@@ -108,3 +129,4 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 - Fix delta in lazygit theme autodetection
 - Clean up cluttered home directory, try and move everything to `.config`
 - Tidy up zshrc
+- Add a docker folder to build an image from so these dotfiles can be easily built for a test drive
