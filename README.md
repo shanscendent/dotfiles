@@ -29,9 +29,11 @@ chezmoi init shanscendent --apply
 
 ### Test Drive
 
-Want to take these dotfiles for a test drive? There's a ready made Ubuntu container that you can drop into to have a go. Note that it'll be slightly out of date
+Want to take my dotfiles for a test drive? There's a ready made Ubuntu container that you can drop into to have a go, if you have Docker available on your system.
 
-Please have docker available on your system.
+Note that it might be slightly out of date, it's x86 only, and it's also quite big at ~4GB.
+
+This drops you into the container's shell and removes it after you `exit`
 
 ```bash
 docker run --rm --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest zsh
@@ -46,6 +48,12 @@ docker run --init --name shanbuntu --hostname shanbuntu -it -d ghcr.io/shanscend
 docker exec -it shanbuntu zsh
 # Stop and remove the container
 docker stop shanbuntu && docker rm shanbuntu
+```
+
+Clean up and remove the image
+
+```bash
+docker image rm ghcr.io/shanscendent/dotfiles/ubuntu
 ```
 
 ## Usage
@@ -141,4 +149,3 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 - Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
   - https://github.com/folke/lazy.nvim/discussions/1188
   - https://github.com/LazyVim/LazyVim/discussions/3679
-- Recipe to clear Docker cache to pull new changes?
