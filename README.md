@@ -34,7 +34,7 @@ Want to take these dotfiles for a test drive? There's a ready made Ubuntu contai
 Please have docker available on your system.
 
 ```bash
-docker run --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest zsh
+docker run --rm --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest zsh
 ```
 
 Alternatively, if you'd like to leave it running and remove it later
