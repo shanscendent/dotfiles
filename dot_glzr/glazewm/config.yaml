@@ -153,6 +153,11 @@ window_rules:
         window_title: { regex: '.*? - Peek' }
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
+      #TODO: command palette rule doesn't seem to work
+      - window_process: { equals: 'Microsoft.CmdPal.UI'}
+        window_title: { regex: 'Command Palette' }
+      - window_process: { equals: 'FluentSearch'}
+        window_title: { regex: 'Fluent Search' }
 
       # Ignore WSLg windows
       - window_process: { equals: 'msrdc' }
