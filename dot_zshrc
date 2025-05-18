@@ -179,6 +179,7 @@ zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 export XDG_CONFIG_HOME="$HOME/.config"
 export MANPAGER='nvim +Man!'
 export EDITOR="nvim"
+export CHTSH_QUERY_OPTIONS="style=lovelace"
 
 eval "$(starship init zsh)"
 
