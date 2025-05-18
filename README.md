@@ -41,7 +41,7 @@ Alternatively, if you'd like to leave it running and remove it later
 
 ```bash
 # Start the container
-docker run --init --name shanbuntu --hostname shanbuntu -it ghcr.io/shanscendent/dotfiles/ubuntu:latest sleep infinity
+docker run --init --name shanbuntu --hostname shanbuntu -it -d ghcr.io/shanscendent/dotfiles/ubuntu:latest sleep infinity
 # Execute into it
 docker exec -it shanbuntu zsh
 # Stop and remove the container
@@ -63,6 +63,14 @@ chezmoi update --apply
 ```
 
 Exit and reopen your terminal to apply changes.
+
+### Ubuntu test container
+
+Login to GHCR with `docker login ghcr.io`
+
+```bash
+just docker
+```
 
 ## Prerequisites
 
@@ -129,4 +137,8 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 - Fix delta in lazygit theme autodetection
 - Clean up cluttered home directory, try and move everything to `.config`
 - Tidy up zshrc
-- Add a docker folder to build an image from so these dotfiles can be easily built for a test drive
+- Tidy up files that don't need to be there on some OSes
+- Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
+  - https://github.com/folke/lazy.nvim/discussions/1188
+  - https://github.com/LazyVim/LazyVim/discussions/3679
+- Recipe to clear Docker cache to pull new changes?
