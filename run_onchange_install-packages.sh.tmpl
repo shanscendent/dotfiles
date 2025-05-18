@@ -1,3 +1,4 @@
+{{ if ne .chezmoi.os "windows" -}}
 #!/bin/bash
 
 # Define OS-specific packages as proper arrays
@@ -80,3 +81,4 @@ echo "✅ Package installation complete!"
 echo "Please restart your terminal or run the appropriate command for your shell:"
 echo "  - Bash: source ~/.bashrc"
 echo "  - Zsh:  source ~/.zshrc"
+{{ end -}}
