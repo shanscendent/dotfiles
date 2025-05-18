@@ -11,7 +11,7 @@ default:
 # build and push docker image to GHCR, run this on every update to Linux configs
 [working-directory: 'docker']
 docker:
-  docker build -t {{tag}}:0.0.{{patch}} .
+  docker build --no-cache --pull -t {{tag}}:0.0.{{patch}} .
   docker image tag {{tag}}:0.0.{{patch}} {{tag}}:latest
   docker push {{tag}}:0.0.{{patch}}
   docker push {{tag}}:latest
