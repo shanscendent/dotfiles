@@ -105,6 +105,6 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 
 ## To-Do
 
-- TODO Fix delta in lazygit theme autodetection
-- Upgrade to mason 2.0.0 after lazyvim fixes it https://github.com/LazyVim/LazyVim/issues/6039
-- Fix chsh still asking for password with passwordless sudo
+- Fix delta in lazygit theme autodetection
+- Clean up cluttered home directory, try and move everything to `.config`
+- Tidy up zshrc
