@@ -141,6 +141,11 @@ compinit
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# Check if running under WSL, reload /etc/environment proxy variables
+if grep -qiE 'microsoft|wsl' /proc/version; then
+  export $(cat /etc/environment | xargs)
+fi
+
 # History
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
