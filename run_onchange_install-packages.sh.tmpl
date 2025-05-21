@@ -19,6 +19,7 @@ packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd"
 # Only runs on Linux with a desktop environment (gnome for now)
 {{ if eq .chezmoi.os "linux" -}}
 {{ if lookPath "gnome-shell" }}
+# Package installation
 # ghostty
 if ! snap list ghostty >/dev/null 2>&1; then
   echo "Installing ghostty."
@@ -32,6 +33,16 @@ if ! dpkg -s keyd >/dev/null 2>&1; then
   sudo apt install keyd -y
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
+
+# Gnome settings
+# dconf dump /org/gnome/desktop/wm/ > "${HOME}/.config/dconffiles/gnome-wm.conf"
+# dconf dump /org/gnome/desktop/interface/ > "${HOME}/.config/dconffiles/gnome-interface.conf"
+# dconf dump /org/gnome/shell/extensions/paperwm/ > "${HOME}/.config/dconffiles/paperwm.conf"
+dconf load /org/gnome/desktop/wm/ < "${HOME}/.config/dconffiles/gnome-wm.conf"
+dconf load /org/gnome/desktop/interface/ < "${HOME}/.config/dconffiles/gnome-interface.conf"
+# dconf load /org/gnome/shell/extensions/paperwm/ > "${HOME}/.config/dconffiles/paperwm.conf"
+# ding messes up paperwm
+# gnome-extensions disable ding@rastersoft.com
 
 # Unused
 # # sway
@@ -54,7 +65,7 @@ if ! cmp -s "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf;
 fi
 
 # Use for testing
-# exit 0
+exit 0
 
 {{ end -}}
 {{ end -}}

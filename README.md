@@ -74,7 +74,9 @@ Exit and reopen your terminal to apply changes.
 
 ### Ubuntu test container
 
-Login to GHCR with `docker login ghcr.io`
+To build and push the ubuntu test container
+
+Login to GHCR with `docker login ghcr.io`, then run
 
 ```bash
 just docker
@@ -91,6 +93,20 @@ Install homebrew so we can easily install chezmoi on Mac or Linux. For users wit
 # remember to copy the .zshrc or .bashrc lines and restart your shell
 brew install chezmoi
 ```
+
+### Linux Desktop
+
+Linux desktop requires some additional configuration to be run.
+
+Install these GNOME Extensions
+
+- [Disable Workspace Switch Animation](https://extensions.gnome.org/extension/4290/disable-workspace-switch-animation-for-gnome-40/)
+
+  ```bash
+  # Check your gnome shell version, make sure it's the version for the recommended branch
+  gnome-shell --version # 46.0
+  sudo apt-get install gnome-browser-connector dconf-editor
+  ```
 
 ### Windows
 
@@ -149,3 +165,7 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 - Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
   - https://github.com/folke/lazy.nvim/discussions/1188
   - https://github.com/LazyVim/LazyVim/discussions/3679
+
+## Notes
+
+- Only Linux distros tested have been Ubuntu. YMMV for other distros.
