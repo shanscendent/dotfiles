@@ -20,7 +20,10 @@ fi
 
 # Change the default shell to zsh
 grep -q "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/shells
-sudo chsh -s "$(command -v zsh)" "$(whoami)"
+
+if [ "$SHELL" != "$(command -v zsh)" ]; then
+  sudo chsh -s "$(command -v zsh)" "$(whoami)"
+fi
 
 # Check if Oh My Zsh is already installed
 if [ -d "$HOME/.oh-my-zsh" ]; then

@@ -16,6 +16,34 @@ packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd"
 )
 {{ end -}}
 
+# Only runs on Linux with a desktop environment (gnome for now)
+{{ if eq .chezmoi.os "linux" -}}
+{{ if lookPath "gnome-shell" }}
+if ! snap list ghostty >/dev/null 2>&1; then
+  sudo snap install ghostty --classic
+fi
+if ! dpkg -s keyd >/dev/null 2>&1; then
+  sudo add-apt-repository ppa:keyd-team/ppa
+  sudo apt update
+  sudo apt install keyd
+  sudo systemctl enable keyd && sudo systemctl start keyd
+fi
+
+# root owned files in etc (quick hack, should probably find a better way to do this)
+# currently, we just overwrite on chezmoi apply
+# keyd configuration
+if [ ! -d /etc/keyd ]; then
+  sudo mkdir -p /etc/keyd
+fi
+if ! cmp -s "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf; then
+  echo "Overwriting keyd configuration and restarting it."
+  sudo cp "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf
+  sudo systemctl restart keyd
+fi
+
+{{ end -}}
+{{ end -}}
+
 # Function to check if a brew package is installed
 is_installed() {
   brew list "$1" &>/dev/null
