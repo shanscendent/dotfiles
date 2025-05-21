@@ -19,15 +19,27 @@ packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd"
 # Only runs on Linux with a desktop environment (gnome for now)
 {{ if eq .chezmoi.os "linux" -}}
 {{ if lookPath "gnome-shell" }}
+# ghostty
 if ! snap list ghostty >/dev/null 2>&1; then
+  echo "Installing ghostty."
   sudo snap install ghostty --classic
 fi
+# keyd
 if ! dpkg -s keyd >/dev/null 2>&1; then
+  echo "Installing keyd."
   sudo add-apt-repository ppa:keyd-team/ppa
   sudo apt update
-  sudo apt install keyd
+  sudo apt install keyd -y
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
+
+# Unused
+# # sway
+# if ! command -v sway >/dev/null 2>&1; then
+#   echo "Installing sway."
+#   sudo apt update
+#   sudo apt install sway -y
+# fi
 
 # root owned files in etc (quick hack, should probably find a better way to do this)
 # currently, we just overwrite on chezmoi apply
@@ -40,6 +52,9 @@ if ! cmp -s "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf;
   sudo cp "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf
   sudo systemctl restart keyd
 fi
+
+# Use for testing
+# exit 0
 
 {{ end -}}
 {{ end -}}
