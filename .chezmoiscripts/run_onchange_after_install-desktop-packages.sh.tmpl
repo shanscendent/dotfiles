@@ -19,7 +19,13 @@ if ! dpkg -s keyd >/dev/null 2>&1; then
   sudo apt install keyd -y
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
-
+# flatpak
+if ! command -v flatpak >/dev/null 2>&1; then
+  echo "Installing flatpak, please restart your computer afterwards."
+  sudo apt update
+  sudo apt install flatpak gnome-software-plugin-flatpak -y
+  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+fi
 if ! gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
   sudo apt install git node-typescript make gnome-shell-extension-prefs
   git clone https://github.com/pop-os/shell.git /tmp/pop-shell-$$/shell
@@ -32,6 +38,8 @@ echo "Overwriting GNOME settings."
 ##########################################################
 # Use fixed number of workspaces to simulate i3
 ##########################################################
+# disable animations
+gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.mutter dynamic-workspaces false
 # gsettings set org.gnome.mutter overlay-key '[<Super>]'
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
