@@ -20,6 +20,166 @@ if ! dpkg -s keyd >/dev/null 2>&1; then
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
 
+if ! gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
+  sudo apt install git node-typescript make gnome-shell-extension-prefs
+  git clone https://github.com/pop-os/shell.git /tmp/pop-shell-$$/shell
+  git -C /tmp/pop-shell-$$/shell checkout master_noble
+  make -C /tmp/pop-shell-$$/shell local-install
+fi
+
+# pop shell config, taken from NullVoxPopuli's dotfiles
+echo "Overwriting GNOME settings."
+##########################################################
+# Use fixed number of workspaces to simulate i3
+##########################################################
+gsettings set org.gnome.mutter dynamic-workspaces false
+# gsettings set org.gnome.mutter overlay-key '[<Super>]'
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
+
+##########################################################
+# Dock-related hotkeys suck
+##########################################################
+gsettings set org.gnome.shell.keybindings switch-to-application-1  []
+gsettings set org.gnome.shell.keybindings switch-to-application-2  []
+gsettings set org.gnome.shell.keybindings switch-to-application-3  []
+gsettings set org.gnome.shell.keybindings switch-to-application-4  []
+gsettings set org.gnome.shell.keybindings switch-to-application-5  []
+gsettings set org.gnome.shell.keybindings switch-to-application-6  []
+gsettings set org.gnome.shell.keybindings switch-to-application-7  []
+gsettings set org.gnome.shell.keybindings switch-to-application-8  []
+gsettings set org.gnome.shell.keybindings switch-to-application-9  []
+gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
+
+##########################################################
+# <Sumer> + <Workspace #>
+##########################################################
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1  "['<Control><Alt><Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2  "['<Control><Alt><Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3  "['<Control><Alt><Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4  "['<Control><Alt><Super>4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5  "['<Control><Alt><Super>5']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6  "['<Control><Alt><Super>6']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7  "['<Control><Alt><Super>7']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8  "['<Control><Alt><Super>8']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9  "['<Control><Alt><Super>9']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Control><Alt><Super>0']"
+
+##########################################################
+# Move a window to a particular workspace
+##########################################################
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1  "['<Control><Alt><Super><Shift>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2  "['<Control><Alt><Super><Shift>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3  "['<Control><Alt><Super><Shift>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4  "['<Control><Alt><Super><Shift>4']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5  "['<Control><Alt><Super><Shift>5']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6  "['<Control><Alt><Super><Shift>6']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7  "['<Control><Alt><Super><Shift>7']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8  "['<Control><Alt><Super><Shift>8']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9  "['<Control><Alt><Super><Shift>9']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Control><Alt><Super><Shift>0']"
+
+##########################################################
+# Disable potentially problematic / accidental keybindings
+##########################################################
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-last []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left []
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left []
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right []
+
+##########################################################
+# Disable actually problematic keybindings
+##########################################################
+gsettings set org.gnome.desktop.wm.keybindings minimize []
+gsettings set org.gnome.desktop.wm.keybindings show-desktop []
+# Defaults to <Super>n, used for changing window focus to the right
+gsettings set org.gnome.shell.keybindings focus-active-notification [] 
+
+##########################################################
+# Launchers
+##########################################################
+# gsettings set org.gnome.mutter overlay-key ""
+# gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>backslash']"
+# gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>minus']"
+# gsettings set com.canonical.unity.settings-daemon.plugins.media-keys terminal '<Primary><Alt>t'
+
+# keybindingKey=0
+# function keybinding() {
+#   keybindingKey=$((keybindingKey+1))
+# 
+#   local name=$1
+#   local command=$2
+#   local binding=$3
+#   local dconfPath="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom$keybindingKey/"
+#   local gsettingsPath="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding"
+#   local fullPath="${gsettingsPath}:${dconfPath}"
+# 
+#   gsettings set "${gsettingsPath}:${dconfPath}" name "'$name'"
+#   gsettings set "${gsettingsPath}:${dconfPath}" binding "'$binding'"
+#   gsettings set "${gsettingsPath}:${dconfPath}" command "'$command'"
+# 
+# }
+# 
+# keybinding 'App Launcher' 'albert toggle' '<Super>d'
+# keybinding 'Interactive Screenshot' 'flameshot gui' '<Shift><Super>s'
+
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Shift><Alt>s', '<Shift><Super>s']"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Control><Alt><Super>backslash']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Control><Alt><Super>q']"
+
+if gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
+  echo "Overwriting Pop Shell settings."
+##########################################################
+# pop-shell settings
+#
+# schema: https://github.com/pop-os/shell/blob/master/schemas/org.gnome.shell.extensions.pop-shell.gschema.xml
+  dconf write '/org/gnome/shell/extensions/pop-shell/active-hint' "true"
+  dconf write '/org/gnome/shell/extensions/pop-shell/hint-color-rgba' "'rgba(158,0,255,0.7)'"
+  dconf write '/org/gnome/shell/extensions/pop-shell/smart-gaps' "true"
+  dconf write '/org/gnome/shell/extensions/pop-shell/snap-to-grid' "true"
+  dconf write '/org/gnome/shell/extensions/pop-shell/gap-inner' 0
+  dconf write '/org/gnome/shell/extensions/pop-shell/gap-outer' 0
+  dconf write '/org/gnome/shell/extensions/pop-shell/toggle-floating' "['<Control><Alt><Super>v']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/toggle-tiling' "['<Control><Alt><Super>t']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/toggle-stacking-global' "['<Control><Alt><Super>e']"
+
+##########################################################
+# Enter Edit mode
+# o - toggle orientation (default)
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-enter' "['<Control><Alt><Super>r']"
+##########################################################
+# Focus Movement
+  dconf write '/org/gnome/shell/extensions/pop-shell/focus-left' "['<Control><Alt><Super>a']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/focus-right' "['<Control><Alt><Super>d']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/focus-up' "['<Control><Alt><Super>w']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/focus-down' "['<Control><Alt><Super>s']"
+##########################################################
+# Tile Movement -- requires "edit mode"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-left' "['a']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-right' "['d']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-up' "['w']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-move-down' "['s']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-left' "['<Shift>a']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-right' "['<Shift>d']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-up' "['<Shift>w']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-swap-down' "['<Shift>s']"
+##########################################################
+# Tile Resizing -- requires "edit mode"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-left' "['h']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-right' "['l']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-up' "['k']"
+  dconf write '/org/gnome/shell/extensions/pop-shell/tile-resize-down' "['j']"
+fi
+
+##########################################################
+# Hide Icons -- can't have a messy desktop if there are no visible icons!
+# (this also fixes the remaining empty tile in pop-shell)
+gnome-extensions disable ding@rastersoft.com
+
 # root owned files in etc (quick hack, should probably find a better way to do this)
 # currently, we just overwrite on chezmoi apply
 # keyd configuration
