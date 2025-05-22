@@ -18,7 +18,7 @@ Takes about 5-10 minutes to finish running.
 
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install build-essential -y
+sudo apt-get install build-essential curl git -y
 CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo >> ~/.bashrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc

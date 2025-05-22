@@ -57,7 +57,9 @@ endif
 "set shiftwidth=2        " indent by 2 spaces when auto-indenting
 "set softtabstop=2       " indent by 2 spaces when hitting tab
 set list                " show indent guides
-syntax on               " syntax highlighting
+if has("syntax")
+  syntax on               " syntax highlighting
+endif
 filetype indent on      " activates indenting for files
 set autoindent          " auto indenting
 set copyindent          " copy previous indent
