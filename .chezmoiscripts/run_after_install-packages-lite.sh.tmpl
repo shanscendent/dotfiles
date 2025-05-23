@@ -5,13 +5,13 @@
 sudo apt update && sudo apt upgrade -y
 
 # Configure tzdata (for vim)
-sudo apt install tzdata -y
 sudo ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
 echo "Asia/Kuala_Lumpur" | sudo tee /etc/timezone
+sudo apt install tzdata -y
 sudo dpkg-reconfigure -f noninteractive tzdata
 
 sudo apt install vim ugrep tmux autossh tree rlwrap zsh -y
-mise install
+mise install -qy --raw
 
 {{ end -}}
 {{ end -}}

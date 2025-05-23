@@ -41,6 +41,8 @@ to finish the rest of the setup.
 
 Homebrew is a bit heavy, there's a different setup path that uses mostly apt and mise to install only the necessary binaries for more resource constrained environments.
 
+Unauthenticated requests to the GitHub API are rate limited, you may want to set a token for mise [here](https://mise.jdx.dev/getting-started.html#github-api-rate-limiting)
+
 ```bash
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install curl git -y
