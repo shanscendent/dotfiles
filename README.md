@@ -2,7 +2,7 @@
 
 ## Quick Setup
 
-### Minimal vimrc for remote servers
+### Minimal vimrc for remote servers (or the root user)
 
 Run this command
 
@@ -12,7 +12,7 @@ curl -o ~/.vimrc https://raw.githubusercontent.com/shanscendent/dotfiles/main/do
 
 Alternatively, if you don't have internet access, just go to the link and copy the content [.vimrc](https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_vimrc)
 
-### New Linux server setup
+### New Linux server setup (Ubuntu Server (20.04-24.04) and Ubuntu Desktop 24.04 only)
 
 Takes about 5-10 minutes to finish running.
 
@@ -26,6 +26,14 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install gcc chezmoi
 chezmoi init shanscendent --apply
 ```
+
+For desktop, the script will log you out after first installation of Pop Shell, just log back in and
+
+```bash
+chezmoi apply
+```
+
+to finish the rest of the setup.
 
 ### Test Drive
 
@@ -93,20 +101,6 @@ Install homebrew so we can easily install chezmoi on Mac or Linux. For users wit
 # remember to copy the .zshrc or .bashrc lines and restart your shell
 brew install chezmoi
 ```
-
-### Linux Desktop
-
-Linux desktop requires some additional configuration to be run.
-
-Install these GNOME Extensions
-
-- [Disable Workspace Switch Animation](https://extensions.gnome.org/extension/4290/disable-workspace-switch-animation-for-gnome-40/)
-
-  ```bash
-  # Check your gnome shell version, make sure it's the version for the recommended branch
-  gnome-shell --version # 46.0
-  sudo apt-get install gnome-browser-connector dconf-editor
-  ```
 
 ### Windows
 

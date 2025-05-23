@@ -37,10 +37,13 @@ if ! command -v flatpak >/dev/null 2>&1; then
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 if ! gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
+  echo -e "\033[5;1;41mWARNING:\033[0m \033[4;33mInstalling Pop Shell will log you out immediately after it completes.\033[0m"
   sudo apt install git node-typescript make gnome-shell-extension-prefs -y
   git clone https://github.com/pop-os/shell.git /tmp/pop-shell-$$/shell
   git -C /tmp/pop-shell-$$/shell checkout master_noble
+  touch /tmp/pop-shell-$$/shell/.confirm_shortcut_change
   make -C /tmp/pop-shell-$$/shell local-install
+  gnome-session-quit --logout --no-prompt
 fi
 
 # pop shell config, taken from NullVoxPopuli's dotfiles
