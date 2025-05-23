@@ -127,7 +127,10 @@ if [[ -d "$HOMEBREW_PREFIX/sbin" && ":$PATH:" != *":$HOMEBREW_PREFIX/sbin:"* ]];
 fi
 eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
-source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+if command -v brew >/dev/null 2>&1; then
+  source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+else
+  source $HOME/.antidote/antidote.zsh
 antidote load
 
 fpath=(~/.zsh.d/ $fpath)
