@@ -13,5 +13,13 @@ sudo dpkg-reconfigure -f noninteractive tzdata
 sudo apt install vim ugrep tmux autossh tree rlwrap zsh -y
 mise install -qy --raw
 
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+
+# fpp
+if [ ! -d "/usr/local/PathPicker" ]; then
+    sudo git clone https://github.com/facebook/PathPicker.git /usr/local/PathPicker
+fi
+sudo ln -sf /usr/local/PathPicker/fpp /usr/local/bin/fpp
+
 {{ end -}}
 {{ end -}}
