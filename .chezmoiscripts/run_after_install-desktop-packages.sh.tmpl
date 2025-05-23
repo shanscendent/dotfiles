@@ -148,6 +148,7 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Control><Alt><Super>q']
 
 if gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
   echo "Overwriting Pop Shell settings."
+  gnome-extensions enable "pop-shell@system76.com"
 ##########################################################
 # pop-shell settings
 #
