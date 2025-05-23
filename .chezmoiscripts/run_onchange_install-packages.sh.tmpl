@@ -1,18 +1,23 @@
 {{ if ne .chezmoi.os "windows" -}}
 #!/bin/bash
 
+# Completely skip homebrew for a lite installation
+{{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/lite") -}}
+exit 0
+{{ end -}}
+
 # Define OS-specific packages as proper arrays
 {{ if eq .chezmoi.os "linux" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
-  "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc" "just"
-  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "trash-cli"
+  "zsh" "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc" "just"
+  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs" "trash-cli"
 )
 {{ else if eq .chezmoi.os "darwin" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
   "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc" "just"
-  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote"
+  "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs"
 )
 {{ end -}}
 

@@ -14,6 +14,8 @@ Alternatively, if you don't have internet access, just go to the link and copy t
 
 ### New Linux server setup (Ubuntu Server (20.04-24.04) and Ubuntu Desktop 24.04 only)
 
+#### Normal Setup
+
 Takes about 5-10 minutes to finish running.
 
 ```bash
@@ -27,13 +29,26 @@ brew install gcc chezmoi
 chezmoi init shanscendent --apply
 ```
 
-For desktop, the script will log you out after first installation of Pop Shell, just log back in and
+For desktop, the script will forcibly log you out after first installation of Pop Shell, just log back in and
 
 ```bash
 chezmoi apply
 ```
 
 to finish the rest of the setup.
+
+#### Lite Setup
+
+Homebrew is a bit heavy, there's a different setup path that uses mostly apt and mise to install only the necessary binaries for more resource constrained environments.
+
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install curl git -y
+curl https://mise.run | sudo env MISE_INSTALL_PATH=/usr/local/bin/mise MISE_QUIET=1 sh
+mise use --global chezmoi
+mkdir -p $HOME/.config/chezmoi/ && touch $HOME/.config/chezmoi/lite
+mise exec -- chezmoi init shanscendent --apply
+```
 
 ### Test Drive
 
