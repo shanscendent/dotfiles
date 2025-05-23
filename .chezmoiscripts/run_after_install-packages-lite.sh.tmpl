@@ -1,0 +1,17 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/lite") -}}
+#!/bin/bash
+
+sudo apt update && sudo apt upgrade -y
+
+# Configure tzdata (for vim)
+sudo apt install tzdata -y
+sudo ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
+echo "Asia/Kuala_Lumpur" | sudo tee /etc/timezone
+sudo dpkg-reconfigure -f noninteractive tzdata
+
+sudo apt install vim ugrep tmux autossh tree rlwrap zsh -y
+mise install
+
+{{ end -}}
+{{ end -}}

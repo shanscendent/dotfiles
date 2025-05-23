@@ -4,7 +4,12 @@
 # Check if zsh is installed
 if ! command -v zsh &>/dev/null; then
   echo "zsh is not installed. Installing zsh..."
-  brew install zsh
+
+  if ! command -v brew &>/dev/null; then
+    brew install zsh
+  else
+    sudo apt install zsh -y
+  fi
 
   # Verify if zsh was successfully installed
   if ! command -v zsh &>/dev/null; then
