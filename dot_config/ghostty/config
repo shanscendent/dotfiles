@@ -1,6 +1,7 @@
-#custom-shader = /Users/shan/.config/ghostty/ghostty-shaders/bloom.glsl
-#theme = light:iTerm2 Light Background,dark:deep
+#custom-shader = $HOME/.config/ghostty/ghostty-shaders/bloom.glsl
 theme = light:GruvboxLightHard,dark:GruvboxDarkHard
 clipboard-read = allow
 clipboard-write = allow
 window-colorspace = display-p3
+# never prompt for confirmation when closing ghostty window
+confirm-close-surface = false

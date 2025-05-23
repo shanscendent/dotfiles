@@ -19,6 +19,16 @@ if ! dpkg -s keyd >/dev/null 2>&1; then
   sudo apt install keyd -y
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
+# gnome-extensions-cli
+if ! command -v gnome-extensions-cli >/dev/null 2>&1; then
+  echo "Installing gnome-extensions-cli."
+  sudo apt update
+  sudo apt install pipx -y
+  pipx install gnome-extensions-cli --system-site-packages
+fi
+# install gnome extensions
+# https://extensions.gnome.org/extension/5090/space-bar/
+gnome-extensions-cli install 5090 >/dev/null 2>&1
 # flatpak
 if ! command -v flatpak >/dev/null 2>&1; then
   echo "Installing flatpak, please restart your computer afterwards."
@@ -27,7 +37,7 @@ if ! command -v flatpak >/dev/null 2>&1; then
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 if ! gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
-  sudo apt install git node-typescript make gnome-shell-extension-prefs
+  sudo apt install git node-typescript make gnome-shell-extension-prefs -y
   git clone https://github.com/pop-os/shell.git /tmp/pop-shell-$$/shell
   git -C /tmp/pop-shell-$$/shell checkout master_noble
   make -C /tmp/pop-shell-$$/shell local-install
@@ -42,7 +52,7 @@ echo "Overwriting GNOME settings."
 gsettings set org.gnome.desktop.interface enable-animations false
 gsettings set org.gnome.mutter dynamic-workspaces false
 # gsettings set org.gnome.mutter overlay-key '[<Super>]'
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 10
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 7
 
 ##########################################################
 # Dock-related hotkeys suck
@@ -68,9 +78,6 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4  "['<Contro
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5  "['<Control><Alt><Super>5']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6  "['<Control><Alt><Super>6']"
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7  "['<Control><Alt><Super>7']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8  "['<Control><Alt><Super>8']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9  "['<Control><Alt><Super>9']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Control><Alt><Super>0']"
 
 ##########################################################
 # Move a window to a particular workspace
@@ -82,9 +89,6 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4  "['<Control>
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5  "['<Control><Alt><Super><Shift>5']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6  "['<Control><Alt><Super><Shift>6']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7  "['<Control><Alt><Super><Shift>7']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8  "['<Control><Alt><Super><Shift>8']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9  "['<Control><Alt><Super><Shift>9']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Control><Alt><Super><Shift>0']"
 
 ##########################################################
 # Disable potentially problematic / accidental keybindings

@@ -160,8 +160,9 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 
 - Fix delta in lazygit theme autodetection
 - Clean up cluttered home directory, try and move everything to `.config`
-- Tidy up zshrc
 - Tidy up files that don't need to be there on some OSes
+- Tidy up zshrc
+- Tidy up messy install scripts
 - Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
   - https://github.com/folke/lazy.nvim/discussions/1188
   - https://github.com/LazyVim/LazyVim/discussions/3679
@@ -169,3 +170,4 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 ## Notes
 
 - Only Linux distros tested have been Ubuntu. YMMV for other distros.
+- Ubuntu 20.04-24.04 headless should work fine, desktop only tested for 24.04.
