@@ -15,11 +15,6 @@ Library/
 .wslgconfig
 OneDrive - Intel Corporation/
 .glzr
-komorebi.ahk
-komorebi.bar.monitor0.json
-komorebi.bar.monitor1.json
-komorebi.bar.monitor2.json
-komorebi.json
 scripts/caps.ahk
 .wezterm.lua
 {{- end }}
