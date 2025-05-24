@@ -128,21 +128,24 @@ fi
 eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
 if command -v brew >/dev/null 2>&1; then
+  eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
   source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+  antidote load
+  fpath=(~/.zsh.d/ $fpath)
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
   source $HOME/.antidote/antidote.zsh
-antidote load
-
-fpath=(~/.zsh.d/ $fpath)
-
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  antidote load
+  fpath=(~/.zsh.d/ $fpath)
+  autoload -Uz compinit
+  compinit
+  # Add mise shims
+  export PATH="$HOME/.local/share/mise/shims:$PATH"
 fi
-autoload -Uz compinit
-compinit
-
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Check if running under WSL, reload /etc/environment proxy variables
 if grep -qiE 'microsoft|wsl' /proc/version; then
