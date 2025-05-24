@@ -20,7 +20,7 @@ push-docker:
 
 [working-directory: 'docker/Ubuntu-lite']
 docker-lite:
-  docker build --no-cache --pull --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t {{repository}}/ubuntu-lite:0.0.{{patch}} .
+  docker build --no-cache --secret id=GITHUB_TOKEN -t {{repository}}/ubuntu-lite:0.0.{{patch}} .
   docker image tag {{repository}}/ubuntu-lite:0.0.{{patch}} {{repository}}/ubuntu-lite:latest
 
 push-docker-lite:

@@ -22,7 +22,8 @@ ENV TERM=xterm-256color
 USER ubuntu
 WORKDIR /home/ubuntu
 
-RUN curl https://mise.run | sudo env MISE_INSTALL_PATH=/usr/local/bin/mise MISE_QUIET=1 sh \
+RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
+  curl https://mise.run | sudo env MISE_INSTALL_PATH=/usr/local/bin/mise MISE_QUIET=1 sh \
   && mise use --global chezmoi \
   && mkdir -p "$HOME/.config/chezmoi/" && touch "$HOME/.config/chezmoi/lite" \
   && mise exec -- chezmoi init shanscendent --apply
