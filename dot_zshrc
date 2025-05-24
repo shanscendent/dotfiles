@@ -125,7 +125,6 @@ fi
 if [[ -d "$HOMEBREW_PREFIX/sbin" && ":$PATH:" != *":$HOMEBREW_PREFIX/sbin:"* ]]; then
   export PATH="$HOMEBREW_PREFIX/sbin:$PATH"
 fi
-eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 
 if command -v brew >/dev/null 2>&1; then
   eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
