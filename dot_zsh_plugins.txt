@@ -1,3 +1,6 @@
 ocodo/ollama_zsh_completion
 Aloxaf/fzf-tab
 jeffreytse/zsh-vi-mode
+zsh-users/zsh-completions path:src kind:fpath
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting
