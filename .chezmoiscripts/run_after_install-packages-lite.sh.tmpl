@@ -2,22 +2,32 @@
 {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/lite") -}}
 #!/bin/bash
 
-sudo apt-get update && sudo apt upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y
 
 # Configure tzdata (for vim)
-sudo ln -sf /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime
-echo "Asia/Kuala_Lumpur" | sudo tee /etc/timezone
-sudo apt-get install tzdata -y
-sudo dpkg-reconfigure -f noninteractive tzdata
+TIMEZONE="Asia/Kuala_Lumpur"
+if [ "$(cat /etc/timezone 2>/dev/null)" != "$TIMEZONE" ]; then
+  sudo ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+  echo "$TIMEZONE" | sudo tee /etc/timezone
+  sudo apt-get install tzdata -y
+  sudo dpkg-reconfigure -f noninteractive tzdata
+fi
 
 sudo apt-get install vim ugrep tmux autossh tree rlwrap pipx zsh -y
 mise install -y --raw
 PATH="$HOME/.local/share/mise/shims:$PATH"
 
-git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+if [ ! -d "${ZDOTDIR:-$HOME}/.antidote" ]; then
+  echo "Installing antidote."
+  git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+fi
 
 # cargo packages
-curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+if ! command -v cargo-binstall >/dev/null 2>&1; then
+  echo "Installing cargo-binstall."
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+  PATH="$HOME/.cargo/bin:$PATH"
+fi
 cargo-binstall procs diskonaut -y
 
 pipx install 'trash-cli[completion]'
