@@ -10,14 +10,14 @@ exit 0
 {{ if eq .chezmoi.os "linux" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
-  "zsh" "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc" "just"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs" "trash-cli"
+  "zsh" "tlrc" "just"
 )
 {{ else if eq .chezmoi.os "darwin" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
-  "zsh-autosuggestions" "zsh-syntax-highlighting" "zsh-completions" "tlrc" "just"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs"
+  "tlrc" "just"
 )
 {{ end -}}
 
