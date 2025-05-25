@@ -10,11 +10,17 @@ echo "Asia/Kuala_Lumpur" | sudo tee /etc/timezone
 sudo apt-get install tzdata -y
 sudo dpkg-reconfigure -f noninteractive tzdata
 
-sudo apt-get install vim ugrep tmux autossh tree rlwrap zsh -y
+sudo apt-get install vim ugrep tmux autossh tree rlwrap pipx zsh -y
 mise install -y --raw
 PATH="$HOME/.local/share/mise/shims:$PATH"
 
 git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+
+# cargo packages
+curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+cargo-binstall procs diskonaut -y
+
+pipx install 'trash-cli[completion]'
 
 # fpp
 if [ ! -d "/usr/local/PathPicker" ]; then
