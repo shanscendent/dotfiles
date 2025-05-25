@@ -15,15 +15,15 @@ fi
 if ! dpkg -s keyd >/dev/null 2>&1; then
   echo "Installing keyd."
   sudo add-apt-repository ppa:keyd-team/ppa -y
-  sudo apt update
-  sudo apt install keyd -y
+  sudo apt-get update
+  sudo apt-get install keyd -y
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
 # gnome-extensions-cli
 if ! command -v gnome-extensions-cli >/dev/null 2>&1; then
   echo "Installing gnome-extensions-cli."
-  sudo apt update
-  sudo apt install pipx -y
+  sudo apt-get update
+  sudo apt-get install pipx -y
   pipx install gnome-extensions-cli --system-site-packages
 fi
 # install gnome extensions
@@ -32,18 +32,24 @@ gnome-extensions-cli install 5090 >/dev/null 2>&1
 # flatpak
 if ! command -v flatpak >/dev/null 2>&1; then
   echo "Installing flatpak, please restart your computer afterwards."
-  sudo apt update
-  sudo apt install flatpak gnome-software-plugin-flatpak -y
+  sudo apt-get update
+  sudo apt-get install flatpak gnome-software-plugin-flatpak -y
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 fi
 if ! gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
   echo -e "\033[5;1;41mWARNING:\033[0m \033[4;33mInstalling Pop Shell will log you out immediately after it completes.\033[0m"
-  sudo apt install git node-typescript make gnome-shell-extension-prefs -y
+  sudo apt-get update
+  sudo apt-get install git node-typescript make gnome-shell-extension-prefs -y
   git clone https://github.com/pop-os/shell.git /tmp/pop-shell-$$/shell
   git -C /tmp/pop-shell-$$/shell checkout master_noble
   touch /tmp/pop-shell-$$/shell/.confirm_shortcut_change
   make -C /tmp/pop-shell-$$/shell local-install
-  gnome-session-quit --logout --no-prompt
+  read -p "Pop Shell installation complete. Log out now to finish setup? [y/N]: " confirm
+  if [[ "$confirm" =~ ^[Yy]$ ]]; then
+    gnome-session-quit --logout --no-prompt
+  else
+    echo "Logout cancelled. Please log out manually to complete installation."
+  fi
 fi
 
 # pop shell config, taken from NullVoxPopuli's dotfiles
