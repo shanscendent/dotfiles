@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+getantidote/use-omz
+ohmyzsh/ohmyzsh path:lib
+
+# Completions
+zsh-users/zsh-completions kind:fpath path:src
+aloxaf/fzf-tab
+ocodo/ollama_zsh_completion
+
+# Utilities
+zshzoo/macos conditional:is-macos
+romkatv/zsh-bench kind:path
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/ssh
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/emoji-clock
+ohmyzsh/ohmyzsh path:plugins/jsontools
+ohmyzsh/ohmyzsh path:plugins/nmap
+ohmyzsh/ohmyzsh path:plugins/timer
+
+# Other Fish-like features
+zdharma-continuum/fast-syntax-highlighting  # Syntax highlighting
+zsh-users/zsh-autosuggestions               # Auto-suggestions
+zsh-users/zsh-history-substring-search      # Up/Down to search history
+
+# Misc
+jeffreytse/zsh-vi-mode

@@ -1,6 +1,5 @@
 FROM ubuntu:24.04
 
-# Update and install prerequisites for Homebrew
 RUN apt-get update && apt-get install -y \
   curl \
   git \
@@ -17,6 +16,7 @@ RUN locale-gen en_US.UTF-8 \
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV TERM=xterm-256color
+ENV SHELL=/usr/bin/zsh
 
 # Switch to the 'ubuntu' user
 USER ubuntu
