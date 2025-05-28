@@ -29,6 +29,7 @@ fi
 # install gnome extensions
 # https://extensions.gnome.org/extension/5090/space-bar/
 gnome-extensions-cli install 5090 >/dev/null 2>&1
+gnome-extensions-cli install 973 >/dev/null 2>&1
 # flatpak
 if ! command -v flatpak >/dev/null 2>&1; then
   echo "Installing flatpak, please restart your computer afterwards."
@@ -151,6 +152,7 @@ gsettings set org.gnome.shell.keybindings focus-active-notification []
 gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Shift><Alt>s', '<Shift><Super>s']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Control><Alt><Super>backslash']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Control><Alt><Super>q']"
+dconf write '/org/gnome/shell/extensions/switcher/show-switcher' "['<Control>space', '<Super>space']"
 
 if gnome-extensions list | grep pop-shell >/dev/null 2>&1; then
   echo "Overwriting Pop Shell settings."
