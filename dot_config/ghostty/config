@@ -5,3 +5,4 @@ clipboard-write = allow
 window-colorspace = display-p3
 # never prompt for confirmation when closing ghostty window
 confirm-close-surface = false
+shell-integration-features = sudo
