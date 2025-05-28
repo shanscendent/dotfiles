@@ -1,7 +1,11 @@
 #!/bin/zsh
 
 ZSH_THEME=""
-ZSH="$HOME/.cache/antidote/ohmyzsh/ohmyzsh"
+if [[ "$(uname)" == "Darwin" ]]; then
+  ZSH="$HOME/Library/Caches/antidote/ohmyzsh/ohmyzsh"
+elif [[ "$(uname)" == "Linux" ]]; then
+  ZSH="$HOME/.cache/antidote/ohmyzsh/ohmyzsh"
+fi
 # Fix zsh-vi-mode interfering with fzf
 ZVM_INIT_MODE=sourcing
 
