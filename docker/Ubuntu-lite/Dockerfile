@@ -30,6 +30,5 @@ RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
 
 SHELL ["/usr/bin/zsh", "-c"]
 
-RUN source ~/.zshrc &&\
-  antidote update &&\
+RUN source ~/.config/zsh/.zshrc &&\
   nvim --headless "+Lazy! install" +qa
