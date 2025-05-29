@@ -38,7 +38,6 @@ RUN chezmoi init shanscendent --apply
 
 SHELL ["/home/linuxbrew/.linuxbrew/bin/zsh", "-c"]
 
-RUN source ~/.zshrc &&\
-  antidote update &&\
+RUN source ~/.config/zsh/.zshrc &&\
   nvim --headless "+Lazy! install" +qa
 

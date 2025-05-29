@@ -13,7 +13,7 @@ if [ "$(cat /etc/timezone 2>/dev/null)" != "$TIMEZONE" ]; then
   sudo dpkg-reconfigure -f noninteractive tzdata
 fi
 
-sudo apt-get install vim ugrep tmux autossh tree rlwrap pipx zsh -y
+sudo apt-get install vim unzip ugrep tmux autossh tree rlwrap pipx zsh -y
 mise install -y --raw
 PATH="$HOME/.local/share/mise/shims:$PATH"
 

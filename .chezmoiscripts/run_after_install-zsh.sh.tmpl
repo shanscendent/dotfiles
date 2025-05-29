@@ -29,21 +29,4 @@ grep -q "$(which zsh)" /etc/shells || echo "$(which zsh)" | sudo tee -a /etc/she
 if [ "$SHELL" != "$(command -v zsh)" ]; then
   sudo chsh -s "$(command -v zsh)" "$(whoami)"
 fi
-
-# Check if Oh My Zsh is already installed
-if [ -d "$HOME/.oh-my-zsh" ]; then
-  echo "Oh My Zsh is already installed."
-  exit 0
-fi
-
-# Install Oh My Zsh
-echo "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-
-# Check if the installation was successful
-if [ -d "$HOME/.oh-my-zsh" ]; then
-  echo "Oh My Zsh installed successfully!"
-else
-  echo "Oh My Zsh installation failed."
-fi
 {{ end }}
