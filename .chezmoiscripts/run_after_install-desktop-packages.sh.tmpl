@@ -29,7 +29,10 @@ fi
 # install gnome extensions
 # https://extensions.gnome.org/extension/5090/space-bar/
 gnome-extensions-cli install 5090 >/dev/null 2>&1
+# https://extensions.gnome.org/extension/973/switcher/
 gnome-extensions-cli install 973 >/dev/null 2>&1
+# https://extensions.gnome.org/extension/3795/notification-timeout/
+gnome-extensions-cli install 3795 >/dev/null 2>&1
 # flatpak
 if ! command -v flatpak >/dev/null 2>&1; then
   echo "Installing flatpak, please restart your computer afterwards."
