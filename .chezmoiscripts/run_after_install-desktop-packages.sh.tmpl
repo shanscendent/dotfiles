@@ -84,24 +84,24 @@ gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 ##########################################################
 # <Sumer> + <Workspace #>
 ##########################################################
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1  "['<Control><Alt><Super>1']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2  "['<Control><Alt><Super>2']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3  "['<Control><Alt><Super>3']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4  "['<Control><Alt><Super>4']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5  "['<Control><Alt><Super>5']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6  "['<Control><Alt><Super>6']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7  "['<Control><Alt><Super>7']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1  "['<Control><Alt><Super>1','<Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2  "['<Control><Alt><Super>2','<Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3  "['<Control><Alt><Super>3','<Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4  "['<Control><Alt><Super>4','<Super>4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5  "['<Control><Alt><Super>5','<Super>5']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6  "['<Control><Alt><Super>6','<Super>6']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7  "['<Control><Alt><Super>7','<Super>6']"
 
 ##########################################################
 # Move a window to a particular workspace
 ##########################################################
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1  "['<Control><Alt><Super><Shift>1']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2  "['<Control><Alt><Super><Shift>2']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3  "['<Control><Alt><Super><Shift>3']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4  "['<Control><Alt><Super><Shift>4']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5  "['<Control><Alt><Super><Shift>5']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6  "['<Control><Alt><Super><Shift>6']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7  "['<Control><Alt><Super><Shift>7']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1  "['<Control><Alt><Super><Shift>1','<Super><Shift>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2  "['<Control><Alt><Super><Shift>2','<Super><Shift>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3  "['<Control><Alt><Super><Shift>3','<Super><Shift>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4  "['<Control><Alt><Super><Shift>4','<Super><Shift>4']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5  "['<Control><Alt><Super><Shift>5','<Super><Shift>5']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6  "['<Control><Alt><Super><Shift>6','<Super><Shift>6']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7  "['<Control><Alt><Super><Shift>7','<Super><Shift>7']"
 
 ##########################################################
 # Disable potentially problematic / accidental keybindings
@@ -123,6 +123,13 @@ gsettings set org.gnome.desktop.wm.keybindings minimize []
 gsettings set org.gnome.desktop.wm.keybindings show-desktop []
 # Defaults to <Super>n, used for changing window focus to the right
 gsettings set org.gnome.shell.keybindings focus-active-notification [] 
+
+# Disable conflicting defaults (might not be needed)
+gsettings set org.gnome.shell.keybindings toggle-application-view "[]"
+gsettings set org.gnome.shell.keybindings toggle-quick-settings "[]"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
+gsettings set org.gnome.desktop.wm.keybindings maximize "[]"
+gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "[]"
 
 ##########################################################
 # Launchers
@@ -153,7 +160,7 @@ gsettings set org.gnome.shell.keybindings focus-active-notification []
 # keybinding 'Interactive Screenshot' 'flameshot gui' '<Shift><Super>s'
 
 gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Shift><Alt>s', '<Shift><Super>s']"
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Control><Alt><Super>backslash']"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Control><Alt><Super>backslash','<Super>backslash']"
 gsettings set org.gnome.desktop.wm.keybindings close "['<Control><Alt><Super>q']"
 dconf write '/org/gnome/shell/extensions/switcher/show-switcher' "['<Control>space', '<Super>space']"
 
