@@ -5,6 +5,10 @@
 {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/lite") -}}
 exit 0
 {{ end -}}
+# Or skip for arch as well
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+exit 0
+{{ end -}}
 
 # Define OS-specific packages as proper arrays
 {{ if eq .chezmoi.os "linux" -}}
