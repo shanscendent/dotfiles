@@ -8,7 +8,11 @@ if ! command -v zsh &>/dev/null; then
   if command -v brew &>/dev/null; then
     brew install zsh
   else
+    {{ if eq .chezmoi.osRelease.id "arch" -}}
+    sudo pacman -S --noconfirm zsh
+    {{- else -}}
     sudo apt-get install zsh -y
+    {{ end }}
   fi
 
   # Verify if zsh was successfully installed
