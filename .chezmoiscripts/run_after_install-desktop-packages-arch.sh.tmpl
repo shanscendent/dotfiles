@@ -1,0 +1,42 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if lookPath "hyprctl" -}}
+#!/bin/bash
+
+echo "Running Arch desktop setup script."
+
+# Only runs on Arch with hyprland
+# Package installation
+# ghostty
+if ! snap list ghostty >/dev/null 2>&1; then
+  echo "Installing ghostty."
+  sudo pacman -S --needed --noconfirm ghostty
+fi
+# keyd
+if ! dpkg -s keyd >/dev/null 2>&1; then
+  echo "Installing keyd."
+  sudo pacman -S --needed --noconfirm keyd
+  sudo systemctl enable keyd && sudo systemctl start keyd
+fi
+# kanshi
+if ! dpkg -s keyd >/dev/null 2>&1; then
+  echo "Installing kanshi."
+  sudo pacman -S --needed --noconfirm kanshi
+  systemctl --user enable kanshi && systemctl --user start kanshi
+fi
+
+# root owned files in etc (quick hack, should probably find a better way to do this)
+# currently, we just overwrite on chezmoi apply
+# keyd configuration
+if [ ! -d /etc/keyd ]; then
+  sudo mkdir -p /etc/keyd
+fi
+if ! cmp -s "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf; then
+  echo "Overwriting keyd configuration and restarting it."
+  sudo cp "${HOME}/.config/etcfiles/keyd/default.conf" /etc/keyd/default.conf
+  sudo systemctl restart keyd
+fi
+
+{{ end -}}
+{{ end -}}
+{{ end -}}
