@@ -22,5 +22,6 @@ scripts/caps.ahk
 justfile
 backup/
 docker/
+docs/
 .tmux.conf
 README.md

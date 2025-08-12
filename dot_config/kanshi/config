@@ -1,0 +1,25 @@
+output "DSI-1" {
+  alias $INTERNAL
+  }
+
+output "HP Inc. HP E27u G4 CN42382RT5" {
+  alias $PURA
+}
+
+output "LG Electronics LG ULTRAFINE 403NTZN49733" {
+  alias $HOME
+}
+
+profile home {
+  output $INTERNAL disable
+  output $HOME enable
+}
+
+profile pura {
+  output $INTERNAL disable
+  output $PURA enable
+}
+
+profile {
+  output $INTERNAL enable
+}
