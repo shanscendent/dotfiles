@@ -59,7 +59,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "󰍛",
+    "format": "{usage:3d}% 󰍛",
     "on-click": "alacritty -e btop"
   },
   "clock": {
@@ -82,9 +82,9 @@
     "on-click": "alacritty --class=Impala -e impala"
   },
   "battery": {
-    "format": "{power}W {capacity}% {icon}",
-    "format-discharging": "{power}W {capacity}% {icon}",
-    "format-charging":    "{power}W {capacity}% {icon}",
+    "format": "{power:2.0f}W {capacity}% {icon}",
+    "format-discharging": "{power:2.0f}W {capacity}% {icon}",
+    "format-charging":    "{power:2.0f}W {capacity}% {icon}",
     "format-plugged":     "",
     "format-icons": {
       "charging": [
@@ -94,7 +94,7 @@
         "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
       ]
     },
-    "format-full": "{power}W {capacity}% 󰂅",
+    "format-full": "{power:2.0f}W {capacity}% 󰂅",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
     "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
     "interval": 3,
