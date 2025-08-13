@@ -99,6 +99,18 @@ Finally, enroll your fingerprint and it should just work!
 fprintd-enroll
 ```
 
+## Speakers
+
+[This](https://github.com/Manawyrm/gpd-pocket-4-pipewire) pipewire DSP for the pocket 4 works surprisingly well for the pocket 3 as well!
+
+The volume is a lot lower but it sounds a lot better. YMMV.
+
+```bash
+yay -S gpd-pocket-4-pipewire
+```
+
+Then configure it in audio control/pavucontrol.
+
 ## Brightness
 
 External monitor control with ddcutil
@@ -151,6 +163,13 @@ For GPU acceleration, use the following settings, but it'll launch in xorg mode
 - Display - Spice, Listen type None, OpenGL enabled
 
 TODO: Enable 3D acceleration for wayland
+
+## TODO
+
+- Fix swayosd not showing up on internal monitor
+- systemd-boot menu not rotated properly?
+- auto powersave on battery
+- fix weird graphical glitches on grouped windows
 
 ## References
 
