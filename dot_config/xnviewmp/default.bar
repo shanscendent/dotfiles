@@ -30,6 +30,8 @@ cmd_settings
 cmd_about
 cmd_tabsShow
 cmd_tabsShow
+cmd_label1
+cmd_label0
 
 [View]
 cmd_browse

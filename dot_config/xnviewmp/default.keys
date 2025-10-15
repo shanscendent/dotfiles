@@ -246,9 +246,9 @@ cmd_gridSettings
 cmd_importClipboard Ctrl+Shift+V
 cmd_join 
 cmd_label0 Ctrl+Shift+0
-cmd_label0m 
+cmd_label0m R
 cmd_label1 Ctrl+Shift+1
-cmd_label1m 
+cmd_label1m E
 cmd_label2 Ctrl+Shift+2
 cmd_label2m 
 cmd_label3 Ctrl+Shift+3

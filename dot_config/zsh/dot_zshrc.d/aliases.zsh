@@ -49,6 +49,9 @@ alias gcad='git commit -a --amend'
 compress() { tar -czf "${1%/}.tar.gz" "${1%/}"; }
 alias decompress="tar -xzf"
 
+# esp-idf
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 # macos
 hud() {
     /bin/launchctl setenv MTL_HUD_ENABLED $1
