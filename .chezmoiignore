@@ -2,7 +2,6 @@
 Library/
 .config/aerospace/
 .config/karabiner/
-.config/xnviewmp/
 {{- end }}
 
 {{- if ne .chezmoi.os "linux" }}

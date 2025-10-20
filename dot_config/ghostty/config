@@ -1,5 +1,5 @@
 #custom-shader = $HOME/.config/ghostty/ghostty-shaders/bloom.glsl
-theme = light:GruvboxLightHard,dark:GruvboxDarkHard
+theme = light:Gruvbox Light Hard,dark:Gruvbox Dark Hard
 clipboard-read = allow
 clipboard-write = allow
 window-colorspace = display-p3
