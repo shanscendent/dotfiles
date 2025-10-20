@@ -1,4 +1,6 @@
-#custom-shader = $HOME/.config/ghostty/ghostty-shaders/bloom.glsl
+# to activate shaders
+# cd ~/.config/ghostty && git clone https://github.com/KroneCorylus/ghostty-shader-playground.git
+custom-shader = ./ghostty-shader-playground/public/shaders/cursor_smear.glsl
 theme = light:Gruvbox Light Hard,dark:Gruvbox Dark Hard
 clipboard-read = allow
 clipboard-write = allow
