@@ -1,5 +1,11 @@
 {{ if eq .chezmoi.os "linux" -}}
+{{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/sudoless") -}}
+{{ exit -}}
+{{ end -}}
 #!/bin/bash
+
+# TODO: Add zsh binary for sudoless install next time
+# https://github.com/romkatv/zsh-bin
 
 # Check if zsh is installed
 if ! command -v zsh &>/dev/null; then

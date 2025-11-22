@@ -5,6 +5,10 @@
 {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/lite") -}}
 exit 0
 {{ end -}}
+# Same for sudoless
+{{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/sudoless") -}}
+exit 0
+{{ end -}}
 # Or skip for arch as well TODO: move out to separate file
 {{ if and .chezmoi.osRelease (eq .chezmoi.osRelease.id "arch") -}}
 sudo pacman -S --needed --noconfirm vim tmux yazi glow ugrep tree rlwrap starship npm go git-delta duf dua-cli procs diskonaut trash-cli just

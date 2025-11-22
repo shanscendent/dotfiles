@@ -1,0 +1,29 @@
+{{ if eq .chezmoi.os "linux" -}}
+{{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/sudoless") -}}
+#!/bin/bash
+
+# Probably don't configure tzdata? But vim needs it
+
+# Do I need rlwrap?
+mise install -y --raw
+PATH="$HOME/.local/share/mise/shims:$PATH"
+
+if [ ! -d "${ZDOTDIR:-$HOME}/.antidote" ]; then
+  echo "Installing antidote."
+  git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-$HOME}/.antidote
+fi
+
+# cargo packages
+if ! command -v cargo-binstall >/dev/null 2>&1; then
+  echo "Installing cargo-binstall."
+  curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
+  PATH="$HOME/.cargo/bin:$PATH"
+fi
+cargo-binstall procs diskonaut -y
+
+pipx install 'trash-cli[completion]'
+
+# TODO: Add fpp
+
+{{ end -}}
+{{ end -}}
