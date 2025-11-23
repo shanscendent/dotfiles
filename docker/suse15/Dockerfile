@@ -12,10 +12,11 @@ RUN set -euo pipefail; \
   zypper addrepo https://download.opensuse.org/repositories/utilities/15.6/utilities.repo; \
   zypper --non-interactive --gpg-auto-import-keys refresh; \
   zypper install -y tmux \
+  awk \
   tree \
   ugrep \
   unzip \
-  python313-pipx \
+  libatomic1 \
   ; \
   zypper -n clean -a ; \
   rm -rf /var/log/{lastlog,tallylog,zypper.log,zypp/history,YaST2}
@@ -44,5 +45,5 @@ RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
 
 SHELL ["/usr/bin/zsh", "-c"]
 
-RUN source ~/.config/zsh/.zshrc &&\
+RUN mise use -g fzf pipx node python && source ~/.config/zsh/.zshrc &&\
   nvim --headless "+Lazy! install" +qa

@@ -2,8 +2,6 @@
 {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/sudoless") -}}
 #!/bin/bash
 
-# Probably don't configure tzdata? But vim needs it
-
 # Do I need rlwrap?
 mise install -y --raw
 PATH="$HOME/.local/share/mise/shims:$PATH"
