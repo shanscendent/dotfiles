@@ -29,7 +29,7 @@ push-docker-lite:
 
 [working-directory: 'docker/suse15']
 docker-suse:
-  docker build --no-cache --secret id=GITHUB_TOKEN -t {{repository}}/suse15:0.0.{{patch}} .
+  docker build --secret id=GITHUB_TOKEN -t {{repository}}/suse15:0.0.{{patch}} .
   docker image tag {{repository}}/suse15:0.0.{{patch}} {{repository}}/suse15:latest
 
 push-docker-suse:

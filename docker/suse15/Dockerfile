@@ -14,7 +14,6 @@ RUN set -euo pipefail; \
   zypper install -y tmux \
   awk \
   tree \
-  ugrep \
   unzip \
   libatomic1 \
   ; \
@@ -39,7 +38,7 @@ ENV PATH="/home/suse/bin:${PATH}"
 
 RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
   curl https://mise.run | env MISE_INSTALL_PATH=/home/suse/bin/mise MISE_QUIET=1 sh \
-  && mise use --global chezmoi \
+  && mise use --global chezmoi pipx \
   && mkdir -p "$HOME/.config/chezmoi/" && touch "$HOME/.config/chezmoi/sudoless" \
   && mise exec -- chezmoi init shanscendent --apply
 
