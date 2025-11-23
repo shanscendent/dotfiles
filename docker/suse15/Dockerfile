@@ -3,6 +3,8 @@ FROM registry.suse.com/bci/bci-base:15.7
 RUN set -euo pipefail; \
   zypper -n ref; \
   zypper -n in curl \
+  wget \
+  gcc \
   git \
   which \
   glibc-locale-base \

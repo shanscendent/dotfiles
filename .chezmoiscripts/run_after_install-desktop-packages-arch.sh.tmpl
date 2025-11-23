@@ -1,6 +1,8 @@
 {{ if eq .chezmoi.os "linux" -}}
 {{ if stat (joinPath .chezmoi.homeDir ".config/chezmoi/sudoless") -}}
-{{ abortEmpty -}}
+#!/bin/sh
+
+exit 0
 {{ end -}}
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 {{ if lookPath "hyprctl" -}}
