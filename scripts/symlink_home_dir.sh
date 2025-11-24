@@ -10,6 +10,8 @@ NFS_BASE="/nfs/youruser" # <-- CHANGE THIS
 HOME_BASE="$HOME"
 
 DIRS=(
+  ".rustup"
+  "neovim"
   ".tmux"
   ".antidote"
   ".config"
