@@ -61,7 +61,7 @@
 
   "cpu": {
     "interval": 5,
-    "format": "{usage:3d}%",
+    "format": "{usage:3d}% 󰍛",
     "on-click": "omarchy-launch-or-focus-tui btop",
     "on-click-right": "alacritty",
   },
