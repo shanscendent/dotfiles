@@ -1,6 +1,6 @@
 # Setting up GPD Pocket 3
 
-Some documentation on setting up the i3-1125G4 GPD Pocket 3 on Arch. We'll be using Omarchy for its excellent theming and Hyprland defaults.
+Some documentation on setting up the i3-1125G4 GPD Pocket 3 with Omarchy 3.
 
 The tips below are for P3, Arch or Hyprland quirks in no particular order, as Ubuntu mostly works out of the box.
 
@@ -8,15 +8,20 @@ Here are some additional tips on the [ArchWiki](https://wiki.archlinux.org/title
 
 ## Setup
 
-Install Arch, run Omarchy installer
+Install Omarchy from the ISO installer
 
 ## Pocket 3 fixes
 
-Boot and login screen rotation (boot doesn't rotate for me, but ymmv)
+Boot and login screen rotation
 
 ```
-# append to options line of /boot/loader/entries/2025-08-08_03-38-37_linux.conf
-fbcon=rotate:1 video=DSI-1:panel_orientation=right_side_up
+# add to /boot/limine.conf
+interface_rotation: 90
+# add to /etc/default/limine
+KERNEL_CMDLINE[default]+="video=DSI-1:panel_orientation=right_side_up"
+
+# then run
+sudo limine-update
 ```
 
 Hyprland
@@ -34,7 +39,7 @@ input {
 }
 ```
 
-- Hold down middle click to scroll with one thumb easily
+- Hold down middle click to scroll with both thumbs easily
 
 ```
 # ~/.config/hypr/input.conf

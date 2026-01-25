@@ -12,19 +12,14 @@ echo "Running Arch desktop setup script."
 
 # Only runs on Arch with hyprland
 # Package installation
-# ghostty
-if ! snap list ghostty >/dev/null 2>&1; then
-  echo "Installing ghostty."
-  sudo pacman -S --needed --noconfirm ghostty
-fi
 # keyd
-if ! dpkg -s keyd >/dev/null 2>&1; then
+if ! pacman -Qi keyd >/dev/null 2>&1; then
   echo "Installing keyd."
   sudo pacman -S --needed --noconfirm keyd
   sudo systemctl enable keyd && sudo systemctl start keyd
 fi
 # kanshi
-if ! dpkg -s keyd >/dev/null 2>&1; then
+if ! pacman -Qi kanshi >/dev/null 2>&1; then
   echo "Installing kanshi."
   sudo pacman -S --needed --noconfirm kanshi
   systemctl --user enable kanshi && systemctl --user start kanshi
