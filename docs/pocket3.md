@@ -6,6 +6,12 @@ The tips below are for P3, Arch or Hyprland quirks in no particular order, as Ub
 
 Here are some additional tips on the [ArchWiki](https://wiki.archlinux.org/title/GPD_Pocket_3).
 
+## Omarchy fixes for my dotfiles
+
+Omarchy ships with a tmux config, which I don't want to use.
+
+Rename ~/.config/tmux/tmux.conf to tmux.conf.bak
+
 ## Setup
 
 Install Omarchy from the ISO installer
@@ -171,10 +177,7 @@ TODO: Enable 3D acceleration for wayland
 
 ## TODO
 
-- Fix swayosd not showing up on internal monitor
-- systemd-boot menu not rotated properly?
-- auto powersave on battery
-- fix weird graphical glitches on grouped windows
+Ain't nobody here but us chickens!
 
 ## References
 
