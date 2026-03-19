@@ -17,6 +17,7 @@ path=(
   /usr/local/{,s}bin(N)
   $HOME/.cargo/{,s}bin(N)
   $HOME/.local/share/mise/shims(N)
+  $HOME/.config/emacs/bin/(N)
   $path
 )
 
