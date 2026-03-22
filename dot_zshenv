@@ -15,9 +15,9 @@ path=(
   /opt/{homebrew,local}/{,s}bin(N)
   /home/linuxbrew/.linuxbrew/{,s}bin(N)
   /usr/local/{,s}bin(N)
+  $HOME/.config/emacs/bin(N)
   $HOME/.cargo/{,s}bin(N)
   $HOME/.local/share/mise/shims(N)
-  $HOME/.config/emacs/bin/(N)
   $path
 )
 

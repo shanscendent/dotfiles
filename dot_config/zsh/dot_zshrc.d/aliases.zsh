@@ -1,6 +1,8 @@
 #!/bin/zsh
 alias zshrc='${EDITOR:-vim} "${ZDOTDIR:-$HOME}"/.zshrc'
 
+alias emacs='emacs -nw'
+
 alias uq='ug -Q'                # interactive TUI search (uses .ugrep config)
 alias uz='ug -z'                # compressed files and archives search (uses .ugrep config)
 alias ux='ug -U --hexdump'      # binary pattern search (uses .ugrep config)
