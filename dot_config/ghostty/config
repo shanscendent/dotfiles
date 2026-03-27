@@ -8,3 +8,5 @@ window-colorspace = display-p3
 # never prompt for confirmation when closing ghostty window
 confirm-close-surface = false
 shell-integration-features = sudo,ssh-terminfo,ssh-env
+#shell-integration-features = ssh-env
+bell-features = system
