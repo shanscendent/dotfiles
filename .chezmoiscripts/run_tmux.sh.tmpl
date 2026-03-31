@@ -2,16 +2,14 @@
 #!/bin/bash
 
 # Define the target directory
-TMUX_DIR="$HOME/.tmux"
+TPM_DIR="$HOME/.config/tmux/plugins/tpm"
 
 # Check if the directory exists
-if [ -d "$TMUX_DIR" ]; then
-    echo "Oh My Tmux! already installed. Pulling latest changes..."
-    git -C "$TMUX_DIR" pull
+if [ -d "$TPM_DIR" ]; then
+    echo "Tmux Plugin Manager! already installed. Pulling latest changes..."
+    git -C "$TPM_DIR" pull
 else
-    echo "Oh My Tmux! not found. Cloning repository..."
-    git clone --single-branch https://github.com/gpakosz/.tmux.git "$TMUX_DIR"
-    # Create symbolic link for .tmux.conf
-    ln -sf "$TMUX_DIR/.tmux.conf" "$HOME/.tmux.conf"
+    echo "Tmux Plugin Manager not found. Cloning repository..."
+    git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 {{ end -}}

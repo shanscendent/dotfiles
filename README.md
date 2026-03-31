@@ -12,6 +12,15 @@ curl -o ~/.vimrc https://raw.githubusercontent.com/shanscendent/dotfiles/main/do
 
 Alternatively, if you don't have internet access, just go to the link and copy the content [.vimrc](https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_vimrc)
 
+### tmux configuration for remote servers
+
+Run this command
+
+```sh
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+curl -o ~/.config/tmux/tmux.conf https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_config/tmux/tmux.conf
+```
+
 ### New Linux server setup (Ubuntu Server (20.04-24.04) and Ubuntu Desktop 24.04 only)
 
 #### Normal Setup
@@ -53,6 +62,9 @@ mise exec -- chezmoi init shanscendent --apply
 ```
 
 ### Test Drive
+
+> [!NOTE]
+> This container is quite out of date.
 
 Want to take my dotfiles for a test drive? There's a ready made Ubuntu container that you can drop into to have a go, if you have Docker available on your system.
 
@@ -169,10 +181,12 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 
 ## To-Do
 
-- Fix delta in lazygit theme autodetection
+- Colors!
+  - Fix delta in lazygit theme autodetection
+  - Dark/light theme auto switching in tmux
+  - Dark/light theme auto switching in emacs
 - Clean up cluttered home directory, try and move everything to `.config`
 - Tidy up files that don't need to be there on some OSes
-- Tidy up zshrc
 - Tidy up messy install scripts
 - Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
   - https://github.com/folke/lazy.nvim/discussions/1188
