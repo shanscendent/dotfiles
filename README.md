@@ -185,6 +185,7 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
   - Fix delta in lazygit theme autodetection
   - Dark/light theme auto switching in tmux
   - Dark/light theme auto switching in emacs
+- Fix cpu/ram status bar on tmux on mac
 - Clean up cluttered home directory, try and move everything to `.config`
 - Tidy up files that don't need to be there on some OSes
 - Tidy up messy install scripts
