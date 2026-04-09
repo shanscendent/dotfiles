@@ -55,3 +55,5 @@
 
 (package! tldr)
 (package! auto-dark)
+(package! d2-mode)
+(package! ob-d2)

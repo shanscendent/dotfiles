@@ -53,7 +53,15 @@
                 ("WAIT" :foreground "orange" :weight bold)
                 ("HOLD" :foreground "magenta" :weight bold)
                 ("CANCELLED" :foreground "forest green" :weight bold)))
-        org-log-done 'time))
+        org-log-done 'time)
+
+  (require 'ob-d2)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((d2 . t))))
+
+
 
 (setq org-agenda-files '("~/org/todo.org"
                          "~/org/work.org"))
@@ -179,6 +187,8 @@
     ;; idea, if only for performance reasons.
     (add-hook hook #'my-auto-dark-init-h -95)))
 
+;; just M-x nerd-icons-install-fonts and dired's icons should work properly
+;; (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14))
 
 (map! :map evil-org-mode-map
       :leader
