@@ -54,3 +54,4 @@
 ;; (unpin! t)
 
 (package! tldr)
+(package! auto-dark)

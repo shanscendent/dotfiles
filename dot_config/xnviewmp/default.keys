@@ -7,7 +7,6 @@ cmd_capture
 cmd_catFocus F9
 cmd_catalogExport 
 cmd_catalogImport 
-cmd_category 
 cmd_changeTime 
 cmd_clean 
 cmd_compare Shift+C
@@ -22,6 +21,7 @@ cmd_copyPathname
 cmd_createMulti 
 cmd_cutFile Ctrl+X
 cmd_deleteFile D
+cmd_editEXIF 
 cmd_editGPS 
 cmd_editIPTC Ctrl+I
 cmd_editXMP 
@@ -119,6 +119,8 @@ cmd_rating5m
 cmd_realSize 
 cmd_rebuildThumb 
 cmd_refreshThumb F5
+cmd_removeAlbum 
+cmd_removeAllAlbums 
 cmd_removeAllCat 
 cmd_removeCat 
 cmd_renameFile F2
@@ -131,6 +133,9 @@ cmd_selectAllFiles
 cmd_selectAllImages 
 cmd_selectNone 
 cmd_selectTagged 
+cmd_sessionClear 
+cmd_sessionLoad 
+cmd_sessionSave 
 cmd_setComment Ctrl+D
 cmd_showAlpha M
 cmd_showBlue 
@@ -181,7 +186,6 @@ cmd_zoomIn +
 cmd_zoomOut -
 
 [View]
-cmd_align 
 cmd_animation 
 cmd_autoContrast Ctrl+Alt+O
 cmd_autoCrop 
@@ -193,7 +197,7 @@ cmd_capture
 cmd_changeDepth 
 cmd_clean 
 cmd_clear 
-cmd_close 
+cmd_close Q
 cmd_colorsCount 
 cmd_conbright 
 cmd_contactSheet 
@@ -207,6 +211,8 @@ cmd_copyPathname
 cmd_crop Shift+X
 cmd_curves 
 cmd_cut Ctrl+X
+cmd_delHStrip 
+cmd_delVStrip 
 cmd_deleteFile D
 cmd_desaturate 
 cmd_editCmap 
@@ -241,7 +247,7 @@ cmd_fullscreen Ctrl+Alt+F
 cmd_geoHack 
 cmd_googleEarthApp 
 cmd_googleMap 
-cmd_goxy 
+cmd_goxy S
 cmd_gridSettings 
 cmd_importClipboard Ctrl+Shift+V
 cmd_join 
@@ -280,7 +286,6 @@ cmd_moveFileTo Ctrl+Shift+M
 cmd_negative 
 cmd_new 
 cmd_normalize 
-cmd_normalize2 
 cmd_offset 
 cmd_oldCamera 
 cmd_opBackColor 
@@ -293,8 +298,10 @@ cmd_pageNext Shift+PgDown
 cmd_pagePrevious Shift+PgUp
 cmd_paint 
 cmd_paste Ctrl+V
+cmd_pasteIn 
 cmd_posterize 
 cmd_print Ctrl+P
+cmd_printAll 
 cmd_printSelection 
 cmd_properties Alt+Return
 cmd_quickSlide Pause

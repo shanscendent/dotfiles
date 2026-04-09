@@ -150,6 +150,36 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; auto dark mode
+(use-package! auto-dark
+  :defer t
+  :init
+  ;; Configure themes
+  (setq! auto-dark-themes '((doom-gruvbox) (doom-gruvbox-light)))
+  ;; Disable doom's theme loading mechanism (just to make sure)
+  (setq! doom-theme nil)
+  (setq auto-dark-allow-osascript t)
+  ;; Declare that all themes are safe to load.
+  ;; Be aware that setting this variable may have security implications if you
+  ;; get tricked into loading untrusted themes (via auto-dark-mode or manually).
+  ;; See the documentation of custom-safe-themes for details.
+  (setq! custom-safe-themes t)
+  ;; Enable auto-dark-mode at the right point in time.
+  ;; This is inspired by doom-ui.el. Using server-after-make-frame-hook avoids
+  ;; issues with an early start of the emacs daemon using systemd, which causes
+  ;; problems with the DBus connection that auto-dark mode relies upon.
+  (defun my-auto-dark-init-h ()
+    (auto-dark-mode)
+    (remove-hook 'server-after-make-frame-hook #'my-auto-dark-init-h)
+    (remove-hook 'after-init-hook #'my-auto-dark-init-h))
+  (let ((hook (if (daemonp)
+                  'server-after-make-frame-hook
+                'after-init-hook)))
+    ;; Depth -95 puts this before doom-init-theme-h, which sounds like a good
+    ;; idea, if only for performance reasons.
+    (add-hook hook #'my-auto-dark-init-h -95)))
+
+
 (map! :map evil-org-mode-map
       :leader
       (:prefix ("r")
