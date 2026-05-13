@@ -53,18 +53,23 @@
                 ("WAIT" :foreground "orange" :weight bold)
                 ("HOLD" :foreground "magenta" :weight bold)
                 ("CANCELLED" :foreground "forest green" :weight bold)))
-        org-log-done 'time)
+        org-log-done 'time
+        org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/org/inbox.org" "Tasks")
+           "* TODO %?\n"))
+        org-agenda-files '("~/org/todo.org"
+                           "~/org/inbox.org")
+        org-refile-targets '((org-agenda-files :maxlevel . 3)
+                             ("~/org/someday.org" :maxlevel . 3))
+        org-refile-use-outline-path t        ; shows full path like Work/Projects
+        org-outline-path-complete-in-steps nil ; single completion prompt
+        )
 
   (require 'ob-d2)
 
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((d2 . t))))
-
-
-
-(setq org-agenda-files '("~/org/todo.org"
-                         "~/org/work.org"))
 
 ;; Agenda View "d" from james stoup
 (defun air-org-skip-subtree-if-priority (priority)
@@ -119,10 +124,17 @@
       deft-extensions '("org" "txt")
       deft-recursive t)
 
-(setq org-journal-date-prefix "#+TITLE: "
-      org-journal-time-prefix "* "
-      org-journal-date-format "%a, %Y-%m-%d"
-      org-journal-file-format "%Y-%m-%d.org")
+;; not working as intended, please fix
+(setq
+ org-journal-dir "~/org/journal/"
+ org-journal-file-type 'yearly
+ org-journal-file-format "%Y.org"
+ org-journal-date-prefix "*** "
+ org-journal-date-format "%A, %d %B %Y"
+ org-journal-time-prefix "**** "
+ org-journal-carryover-items "TODO=\"TODO\"|TODO=\"NEXT\"|TODO=\"WAIT\"|TODO=\"HOLD\""
+ org-journal-enable-agenda-integration t
+ )
 
 (setq org-roam-directory "~/org/roam")
 (setq org-roam-completion-everywhere t)
@@ -207,3 +219,20 @@
        "v" #'org-roam-node-visit
        :desc "Open ORUI"
        "u" #'org-roam-ui-open))
+
+(use-package! javelin
+  :config
+  (global-javelin-minor-mode 1))
+
+(map! :leader
+      :desc "Javelin quick menu"
+      "H" #'javelin-toggle-quick-menu
+      "1" #'javelin-go-or-assign-to-1
+      "2" #'javelin-go-or-assign-to-2
+      "3" #'javelin-go-or-assign-to-3
+      "4" #'javelin-go-or-assign-to-4
+      "5" #'javelin-go-or-assign-to-5
+      "6" #'javelin-go-or-assign-to-6
+      "7" #'javelin-go-or-assign-to-7
+      "8" #'javelin-go-or-assign-to-8
+      "9" #'javelin-go-or-assign-to-9)

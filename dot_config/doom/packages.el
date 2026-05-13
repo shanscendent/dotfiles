@@ -57,3 +57,4 @@
 (package! auto-dark)
 (package! d2-mode)
 (package! ob-d2)
+(package! javelin)
