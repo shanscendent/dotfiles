@@ -224,6 +224,7 @@
   :config
   (global-javelin-minor-mode 1))
 
+(setq javelin-update-bookmark t)
 (map! :leader
       :desc "Javelin quick menu"
       "H" #'javelin-toggle-quick-menu
