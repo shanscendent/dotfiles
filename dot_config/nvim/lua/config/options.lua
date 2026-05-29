@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- force always cwd for find files/picker, etc
+vim.g.root_spec = { "cwd" }
+
 vim.o.clipboard = "unnamedplus"
 
 local function paste()
