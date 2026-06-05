@@ -1,0 +1,5 @@
+# osc52 copy
+
+copy() {
+    printf '\033]52;c;%s\a' "$(base64 | tr -d '\r\n')"
+}
