@@ -3,6 +3,6 @@ cdc() {
   dir=$(fd . --type d --hidden --exclude .git \
     | fzf --height 40% --reverse --prompt="dirs > " \
           --preview 'eza -1 --color=always --icons=auto --group-directories-first {} | head -100' \
-          --preview-window=down:40%:wrap
-  ) && cd "$dir"
+          --preview-window=right:50%:wrap
+  ) && cd -- "$dir"
 }
