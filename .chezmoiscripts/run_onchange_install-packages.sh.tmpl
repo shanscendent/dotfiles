@@ -20,14 +20,17 @@ exit 0
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs" "trash-cli"
-  "zsh" "tlrc" "just" "unzip"
+  "zsh" "tlrc" "just" "unzip" "btop" "emacs"
 )
 {{ else if eq .chezmoi.os "darwin" -}}
 packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd" "eza"
   "ripgrep" "yazi" "glow" "ugrep" "bat" "tree" "rlwrap" "starship" "neovim" "npm" "go"
   "git-delta" "duf" "dua-cli" "procs" "diskonaut" "antidote" "mprocs"
-  "tlrc" "just"
+  "tlrc" "just" "btop"
 )
+# for emacs
+# brew tap d12frosted/emacs-plus
+# brew install --cask emacs-plus-app
 {{ end -}}
 
 # Function to check if a brew package is installed

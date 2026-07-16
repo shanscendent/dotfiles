@@ -189,6 +189,11 @@ notepad "$HOME/.config/chezmoi/chezmoi.toml"
 - Clean up cluttered home directory, try and move everything to `.config`
 - Tidy up files that don't need to be there on some OSes
 - Tidy up messy install scripts
+- Merge and export BTT config on both machines to dotfiles
+- Add script to clone TPM automatically (initialize it too if possible)
+- Upgrade aerospace config
+- Update containers
+- Add rocky linux installation
 - Set up the Ubuntu docker container properly (or neovim in chezmoi scripts), helpful reading below
   - https://github.com/folke/lazy.nvim/discussions/1188
   - https://github.com/LazyVim/LazyVim/discussions/3679
