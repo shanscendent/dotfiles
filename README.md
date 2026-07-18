@@ -18,6 +18,7 @@ Run this command
 
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+mkdir -p ~/.config/tmux
 curl -o ~/.config/tmux/tmux.conf https://raw.githubusercontent.com/shanscendent/dotfiles/main/dot_config/tmux/tmux.conf
 ```
 
