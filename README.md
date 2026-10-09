@@ -35,7 +35,7 @@ CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/insta
 echo >> ~/.bashrc
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-brew install gcc chezmoi
+brew install gcc chezmoi -y
 chezmoi init shanscendent --apply
 ```
 
@@ -129,7 +129,7 @@ Install homebrew so we can easily install chezmoi on Mac or Linux. For users wit
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # remember to copy the .zshrc or .bashrc lines and restart your shell
-brew install chezmoi
+brew install chezmoi -y
 ```
 
 ### Windows

@@ -30,7 +30,7 @@ packages=("tmux" "jq" "fzf" "zoxide" "lazygit" "lazydocker" "autossh" "fpp" "fd"
 )
 # for emacs
 # brew tap d12frosted/emacs-plus
-# brew install --cask emacs-plus-app
+# brew install --cask emacs-plus-app -y
 {{ end -}}
 
 # Function to check if a brew package is installed
@@ -54,7 +54,7 @@ install_packages() {
 
   if [ ${#missing_packages[@]} -gt 0 ]; then
     echo "Installing missing packages: ${missing_packages[*]}"
-    brew install "${missing_packages[@]}"
+    brew install "${missing_packages[@]}" -y
   else
     echo "All packages already installed."
   fi
@@ -89,7 +89,7 @@ upgrade_packages "${packages[@]}"
 
 # Check if font is already installed
 if ! brew list --cask font-jetbrains-mono-nerd-font &>/dev/null; then
-  brew install --cask font-jetbrains-mono-nerd-font
+  brew install --cask font-jetbrains-mono-nerd-font -y
 fi
 
 # Don't source rc files directly - print instruction instead

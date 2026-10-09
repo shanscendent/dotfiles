@@ -31,7 +31,7 @@ RUN NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Hom
 
 # Add Homebrew to PATH
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-RUN brew install gcc chezmoi
+RUN brew install gcc chezmoi -y
 
 # Uncomment to remove dotfiles setup
 RUN chezmoi init shanscendent --apply
