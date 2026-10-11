@@ -1,6 +1,8 @@
 # Setting up GPD Pocket 3
 
-Some documentation on setting up the i3-1125G4 GPD Pocket 3 with Omarchy 3.
+Some documentation on setting up the i3-1125G4 GPD Pocket 3 with Omarchy 4.
+
+I don't quite like how it's completely vibe coded and want to check out ML4W or cachyos-hypr-noctalia but it's just much easier to upgrade from Omarchy 3 at the moment.
 
 The tips below are for P3, Arch or Hyprland quirks in no particular order, as Ubuntu mostly works out of the box.
 
@@ -32,30 +34,24 @@ sudo limine-update
 
 Hyprland
 
-- Rotate P3 monitor, touchscreen properly
+- Rotate P3 monitor, touchscreen, hold down middle click to scroll with both thumbs easily
 
 ```
-# ~/.config/hypr/monitors.conf
-monitor = DSI-1,preferred,auto,1.5,transform,3
-# ~/.config/hypr/input.conf
-input {
-  touchdevice {
-    transform = 3
-  }
-}
+# ~/.config/hypr/monitors.lua
+hl.monitor({ output = "DSI-1", mode = "preferred", position = "auto", scale = omarchy_monitor_scale, transform = 3 })
+# ~/.config/hypr/input.lua
+hl.config({
+	input = {
+		touchdevice = {
+			transform = 3,
+		},
+		scroll_method = "on_button_down",
+		scroll_button = 274,
+	},
+})
 ```
 
-- Hold down middle click to scroll with both thumbs easily
-
-```
-# ~/.config/hypr/input.conf
-input {
-  scroll_method = on_button_down
-  scroll_button = 274
-}
-```
-
-- Some additional stuff to bind to the lid switch
+- Some additional stuff to bind to the lid switch (might not be needed anymore)
 
 ```
 # ~/.config/hypr/bindings.conf
@@ -67,18 +63,30 @@ bindl = , switch:on:Lid Switch, exec, hyprctl keyword input:touchdevice:enabled 
 bindl = , switch:on:Lid Switch, exec, hyprlock --immediate
 ```
 
+- Idle settings in `~/.config/omarchy/shell.json`, also toggleable with `omarchy toggle idle`
+
 ## Screen auto rotation
 
+The `iio-hyprland-git` version in the AUR is a bit old, let's use the latest fork with hyprland lua support (needs meson to build)
+
 ```bash
-yay -S iio-sensor-proxy iio-hyprland-git
+yay -S iio-sensor-proxy meson
+cd /tmp
+git clone https://github.com/ThorTuwy/lua-iio-hyprland
+cd lua-iio-hyprland
+sudo make install
 ```
 
 ```
-# ~/.config/hypr/input.conf
-exec-once = iio-hyprland DSI-1
+# ~/.config/hypr/input.lua
+hl.on("hyprland.start", function()
+	hl.exec_cmd("iio-hyprland DSI-1")
+end)
 ```
 
 ## Fingerprint sensor setup
+
+Outdated? Might not need these instructions anymore.
 
 We need a proprietary libfprint from focaltech to make the sensor work.
 

@@ -7,8 +7,16 @@ clipboard-write = allow
 window-colorspace = display-p3
 # never prompt for confirmation when closing ghostty window
 confirm-close-surface = false
-macos-titlebar-style = hidden
-font-size = 18
-shell-integration-features = sudo,ssh-terminfo,ssh-env
-#shell-integration-features = ssh-env
+#shell-integration-features = sudo,ssh-terminfo,ssh-env
+shell-integration-features = ssh-env
 bell-features = system
+font-size = 18
+
+# Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
+async-backend = epoll
+
+# Send Shift+Enter as CSI-u so TUIs can distinguish it from Enter.
+keybind = shift+enter=csi:13;2u
+
+# Legacy encoding sends Alt+Shift+Enter the same as Alt+Enter; send CSI-u so tmux can match M-S-Enter.
+keybind = alt+shift+enter=csi:13;4u
