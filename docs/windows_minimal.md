@@ -2,9 +2,11 @@
 
 Some instructions to quickly set up Windows to be usable in a pinch (with no admin access), with the following tools:
 
-- Terminal (wezterm)
+- Terminal (`wezterm`)
   - I'm quite used to tmux bindings, fortunately, most of them are configurable in wezterm
-- Text Editor (neovim)
+- Terminal alternative
+  - Or, could check out the `psmux` and `Terminal` combo
+- Text Editor (`neovim`)
 
 These programs are available as portable binaries, just download the official releases, unzip them and add them to your path.
 
@@ -177,7 +179,8 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- OSC 52 clipboard
-vim.g.clipboard = "osc52"
+vim.g.clipboard = "win32yank"
+-- vim.g.clipboard = "osc52" -- if needed in wezterm?
 vim.o.clipboard = "unnamedplus"
 
 -- QOL

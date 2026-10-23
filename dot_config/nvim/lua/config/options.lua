@@ -5,8 +5,7 @@
 -- force always cwd for find files/picker, etc
 vim.g.root_spec = { "cwd" }
 
-vim.o.clipboard = "unnamedplus"
-
+-- TODO: do I still need this?
 local function paste()
   return {
     vim.fn.split(vim.fn.getreg(""), "\n"),
@@ -14,16 +13,7 @@ local function paste()
   }
 end
 
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = paste,
-    ["*"] = paste,
-  },
-}
+vim.g.clipboard = "osc52"
+vim.o.clipboard = "unnamedplus"
 
 vim.g.ai_cmp = true
