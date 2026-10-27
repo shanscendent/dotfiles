@@ -2,6 +2,8 @@
 
 Some instructions to quickly set up Windows to be usable in a pinch (with no admin access), with the following tools:
 
+- Terminal (Windows Terminal)
+  - This works in a pinch
 - Terminal (`wezterm`)
   - I'm quite used to tmux bindings, fortunately, most of them are configurable in wezterm
 - Terminal alternative
@@ -10,7 +12,30 @@ Some instructions to quickly set up Windows to be usable in a pinch (with no adm
 
 These programs are available as portable binaries, just download the official releases, unzip them and add them to your path.
 
-## Terminal
+## Terminal (Windows Terminal)
+
+```json
+{
+  "copyFormatting": "none",
+  "copyOnSelect": true,
+  "tabSwitcherMode": "inOrder",
+  "keybindings": [
+    { "id": "Terminal.CopyToClipboard", "keys": "ctrl+shift+c" },
+    { "id": "Terminal.PasteFromClipboard", "keys": "ctrl+shift+v" },
+    { "id": "Terminal.SwitchToTab0", "keys": "alt+1" },
+    { "id": "Terminal.SwitchToTab1", "keys": "alt+2" },
+    { "id": "Terminal.SwitchToTab2", "keys": "alt+3" },
+    { "id": "Terminal.SwitchToTab3", "keys": "alt+4" },
+    { "id": "Terminal.SwitchToTab4", "keys": "alt+5" },
+    { "id": "Terminal.SwitchToTab5", "keys": "alt+6" },
+    { "id": "Terminal.SwitchToTab6", "keys": "alt+7" },
+    { "id": "Terminal.SwitchToTab7", "keys": "alt+8" },
+    { "id": "Terminal.SwitchToTab8", "keys": "alt+9" }
+  ]
+}
+```
+
+## Terminal (wezterm)
 
 Paste the following into `~\.wezterm.lua`
 
